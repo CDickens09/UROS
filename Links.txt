@@ -1,2 +1,4 @@
 [1] https://learn.sparkfun.com/tutorials/using-github-to-share-with-sparkfun/committing-pushing-and-pulling
 [2] https://pages.github.com/
+[3] http://htmldog.com/guides/html/beginner/titles/
+[4] https://www.w3schools.com/tags/tag_comment.asp
