@@ -23,3 +23,5 @@
 18/07/2017 - Noted that animation button appeared but removed the box
 18/07/2017 - Managed to get both button and box to appear, noted that comments seem to break the style section
 18/07/2017 - Got black box to appear after button click with aid of [7]
+18/07/2017 - Added blue box with other button
+18/07/2017 - Got them to appear in same space by removing one before placing other
