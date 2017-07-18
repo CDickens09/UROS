@@ -10,12 +10,20 @@
 
 <style>
 
-#AnimationBox 
+#AnimationBox1
 {
   width: 500px;
   height: 500px;
   position: relative;
   background: black;
+}
+
+#AnimationBox2
+{
+  width: 500px;
+  height: 500px;
+  position: relative;
+  background: blue;
 }
   
 </style>
@@ -25,19 +33,32 @@
 
 <h1>Chris Dickens - UROS Placement</h1> 
 
-<!--Button for animation 1 (Add function for it later)-->
+<!--Button for animation 1-->
 <p>
 <button onclick="Animation1()">Animation 1</button> 
 </p>
 
-<!--Displays AnimationBox on page-->
-<div id="AnimationBox" style="display:none;"> 
+<!--Button for animation 2-->
+<p>
+<button onclick="Animation2()">Animation 2</button> 
+</p>
+
+<!--Displays AnimationBox1 on page-->
+<div id="AnimationBox1" style="display:none;"> 
+</div>
+
+<!--Displays AnimationBox2 on page-->
+<div id="AnimationBox2" style="display:none;"> 
 </div>
 
 <script>
 function Animation1()
 {
-document.getElementById('AnimationBox').style.display = "block";
+document.getElementById('AnimationBox1').style.display = "block";
+}
+function Animation2()
+{
+document.getElementById('AnimationBox2').style.display = "block";
 }
 </script>
 
