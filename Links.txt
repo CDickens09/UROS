@@ -5,3 +5,6 @@
 [5] http://wiki.unity3d.com/index.php/Trajectory_Simulation
 [6] https://www.w3schools.com/howto/howto_js_animate.asp
 [7] https://stackoverflow.com/questions/6957443/how-to-display-div-after-click-the-button-in-javascript
+[8] https://www.w3schools.com/css/css3_animations.asp
+[9] https://www.w3schools.com/cssref/css3_pr_animation.asp
+[10] https://www.w3schools.com/jsref/jsref_random.asp
