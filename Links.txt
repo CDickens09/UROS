@@ -3,3 +3,4 @@
 [3] http://htmldog.com/guides/html/beginner/titles/
 [4] https://www.w3schools.com/tags/tag_comment.asp
 [5] http://wiki.unity3d.com/index.php/Trajectory_Simulation
+[6] https://www.w3schools.com/howto/howto_js_animate.asp
