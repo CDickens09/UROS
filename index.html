@@ -1,53 +1,64 @@
-{% include head.html %}
-<style>
-  #AnimationBox1
-  {
-    width: 500px;
-    height: 500px;
-    position: relative;
-    background: black;
-  }
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Chris Dickens - UROS Placement</title>
+    </head>  
+  
+    <meta charset="utf-8">
+    <!--Sets width of window to equal the width of viewers device so no side scroll bar is necessary-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  
+    <body>
+      
+    <style>
+      #AnimationBox1
+      {
+        width: 500px;
+        height: 500px;
+        position: relative;
+        background: black;
+      }
+      #AnimationBox2
+      {
+      width: 500px;
+      height: 500px;
+      position: relative;
+      background: blue;
+      }  
+    </style>
 
-  #AnimationBox2
-  {
-    width: 500px;
-    height: 500px;
-    position: relative;
-    background: blue;
-  }  
-</style>
+    <h1>Chris Dickens - UROS Placement</h1> 
 
-<h1>Chris Dickens - UROS Placement</h1> 
+    <!--Button for animation 1-->
+    <p>
+      <button onclick="Animation1()">Animation 1</button> 
+    </p>
 
-<!--Button for animation 1-->
-<p>
-  <button onclick="Animation1()">Animation 1</button> 
-</p>
+    <!--Button for animation 2-->
+    <p>
+      <button onclick="Animation2()">Animation 2</button> 
+    </p>
 
-<!--Button for animation 2-->
-<p>
-  <button onclick="Animation2()">Animation 2</button> 
-</p>
-
-<!--Displays AnimationBox1 on page-->
-<div id="AnimationBox1" style="display:none;"> 
-</div>
-
-<!--Displays AnimationBox2 on page-->
-<div id="AnimationBox2" style="display:none;"> 
-</div>
-
-<script>
-  function Animation1()
-  {
-    document.getElementById('AnimationBox2').style.display = "none";
-    document.getElementById('AnimationBox1').style.display = "block";
-  }
-  function Animation2()
-  {
-    document.getElementById('AnimationBox1').style.display = "none";
-    document.getElementById('AnimationBox2').style.display = "block";
-  }
-</script>
-
-{% include foot.html %}
+    <!--Displays AnimationBox1 on page-->
+    <div id="AnimationBox1" style="display:none;"> 
+    </div>
+      
+    <!--Displays AnimationBox2 on page-->
+    <div id="AnimationBox2" style="display:none;"> 
+    </div>
+      
+    <script>
+      function Animation1()
+      {
+        document.getElementById('AnimationBox2').style.display = "none";
+        document.getElementById('AnimationBox1').style.display = "block";
+      }
+      function Animation2()
+      {
+        document.getElementById('AnimationBox1').style.display = "none";
+        document.getElementById('AnimationBox2').style.display = "block";
+      }
+    </script>
+      
+    {% include foot.html %}
