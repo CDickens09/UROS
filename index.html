@@ -1,35 +1,32 @@
 {% include head.html}
-
 <style>
+  #AnimationBox1
+  {
+    width: 500px;
+    height: 500px;
+    position: relative;
+    background: black;
+  }
 
-#AnimationBox1
-{
-  width: 500px;
-  height: 500px;
-  position: relative;
-  background: black;
-}
-
-#AnimationBox2
-{
-  width: 500px;
-  height: 500px;
-  position: relative;
-  background: blue;
-}
-  
+  #AnimationBox2
+  {
+    width: 500px;
+    height: 500px;
+    position: relative;
+    background: blue;
+  }  
 </style>
 
 <h1>Chris Dickens - UROS Placement</h1> 
 
 <!--Button for animation 1-->
 <p>
-<button onclick="Animation1()">Animation 1</button> 
+  <button onclick="Animation1()">Animation 1</button> 
 </p>
 
 <!--Button for animation 2-->
 <p>
-<button onclick="Animation2()">Animation 2</button> 
+  <button onclick="Animation2()">Animation 2</button> 
 </p>
 
 <!--Displays AnimationBox1 on page-->
@@ -41,16 +38,16 @@
 </div>
 
 <script>
-function Animation1()
-{
-document.getElementById('AnimationBox2').style.display = "none";
-document.getElementById('AnimationBox1').style.display = "block";
-}
-function Animation2()
-{
-document.getElementById('AnimationBox1').style.display = "none";
-document.getElementById('AnimationBox2').style.display = "block";
-}
+  function Animation1()
+  {
+    document.getElementById('AnimationBox2').style.display = "none";
+    document.getElementById('AnimationBox1').style.display = "block";
+  }
+  function Animation2()
+  {
+    document.getElementById('AnimationBox1').style.display = "none";
+    document.getElementById('AnimationBox2').style.display = "block";
+  }
 </script>
 
 {% include foot.html}
