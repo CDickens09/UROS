@@ -30,3 +30,4 @@
 19/07/2017 - Had a look at Chrome DevTool menu (F12) on a few websites to see what different chunks of html code made
 19/07/2017 - Added School of Mathematics and Physics footer to page
 19/07/2017 - Attempted to make header and footer as seperate files so multiple pages could use them in future
+19/07/2017 - Major issues with header and footer not appearing on site indtead just showing as text, unclear why
