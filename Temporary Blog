@@ -31,3 +31,4 @@
 19/07/2017 - Added School of Mathematics and Physics footer to page
 19/07/2017 - Attempted to make header and footer as seperate files so multiple pages could use them in future
 19/07/2017 - Major issues with header and footer not appearing on site indtead just showing as text, unclear why
+19/07/2017 - Removed seperate header footer files and just made them in the index.html file
