@@ -45,3 +45,5 @@
 20/07/2017 - Links to pages work just need to add different content to them
 20/07/2017 - Tested on mobile and web browser to make sure sizes worked
 20/07/2017 - Next Steps page created to track targets 
+20/07/2017 - Decided to leave navigation style in seperate index files incase this needed changing on some pages
+20/07/2017 - Made navigation.html and directed each index to it so only that file needed changing if more pages were added
