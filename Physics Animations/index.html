@@ -8,62 +8,101 @@
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     </head>
 	
-	<header class="w3-center w3-black w3-padding-16">
-	<p>
-		<a href="http://www.lincoln.ac.uk/home/smp/" title="Header" target="_blank" class="w3-hover-text-blue">Chris Dickens</a>, University of Lincoln, UK
-	</p>
-	</header>
-	
 	<style>
-      #AnimationBox1
-      {
-        width: 500px;
-        height: 500px;
-        position: relative;
-        background: red;
-      }
-      #AnimationBox2
-      {
-      width: 500px;
-      height: 500px;
-      position: relative;
-      background: blue;
-      }  
+		#AnimationBox1
+		{
+			width: device-width;
+			height: 500px;
+			position: relative;
+			background: red;
+		}
+		#AnimationBox2
+		{
+			width: device-width;
+			height: 500px;
+			position: relative;
+			background: blue;
+		}  
+		ul 
+		{
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: black;
+			position: fixed;
+			top: 0;
+			width: 100%;
+		}
+		li 
+		{
+			float: left;
+		}
+		li a 
+		{
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+		li a:hover:not(.active) 
+		{
+			background-color: #111;
+		}
     </style>
 
     <body>
-    <h1>Chris Dickens - UROS Placement</h1> 
+	
+	<!--Navigation bar for page-->
+	<ul class="nav navbar-nav navbar-right">
+		<li>
+			<a href="/UROS/">Home</a>
+		</li>
+		<li>
+			<a href="/UROS/Physics Animations/">Physics Animations</a>
+		</li>
+		<li>
+			<a href="/UROS/Blog/">Blog</a>
+		</li>
+		<li>
+			<a href="/UROS/About/">About</a>
+		</li>
+	</ul>
 
-    <!--Button for animation 1-->
-    <p>
-      <button onclick="Animation1()">Animation 1</button> 
-    </p>
+	<div style="padding:20px;margin-top:30px;">
+		<h1>Chris Dickens - UROS Placement</h1> 
 
-    <!--Button for animation 2-->
-    <p>
-      <button onclick="Animation2()">Animation 2</button> 
-    </p>
+		<!--Button for animation 1-->
+		<p>
+			<button onclick="Animation1()">Animation 1</button> 
+		</p>
 
-    <!--Displays AnimationBox1 on page-->
-    <div id="AnimationBox1" style="display:none;"> 
-    </div>
+		<!--Button for animation 2-->
+		<p>
+			<button onclick="Animation2()">Animation 2</button> 
+		</p>
+
+		<!--Displays AnimationBox1 on page-->
+		<div id="AnimationBox1" style="display:none;"> 
+		</div>
       
-    <!--Displays AnimationBox2 on page-->
-    <div id="AnimationBox2" style="display:none;"> 
-    </div>
-      
-    <script>
-      function Animation1()
-      {
-        document.getElementById('AnimationBox2').style.display = "none";
-        document.getElementById('AnimationBox1').style.display = "block";
-      }
-      function Animation2()
-      {
-        document.getElementById('AnimationBox1').style.display = "none";
-        document.getElementById('AnimationBox2').style.display = "block";
-      }
-    </script>
+		<!--Displays AnimationBox2 on page-->
+		<div id="AnimationBox2" style="display:none;"> 
+		</div>
+     </div>
+	<script>
+		function Animation1()
+		{
+			document.getElementById('AnimationBox2').style.display = "none";
+			document.getElementById('AnimationBox1').style.display = "block";
+		}
+		function Animation2()
+		{		
+			document.getElementById('AnimationBox1').style.display = "none";
+			document.getElementById('AnimationBox2').style.display = "block";
+		}
+	</script>
       
 	<footer class="w3-center w3-black w3-padding-16">
 	<p>
