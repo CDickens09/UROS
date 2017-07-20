@@ -55,3 +55,4 @@
 20/07/2017 - Tested animation and size chnages on multiple devices to test fit, all worked but will reduce padding on footer for better visuals
 20/07/2017 - Updated titles for each page
 20/07/2017 - Updated next steps
+20/07/2017 - Noticed an issue on mobile devices where because navigation bar goes onto two lines text is covered, will attempt to fix this tomorrow with some form of dropdown menu
