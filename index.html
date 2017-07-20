@@ -28,10 +28,27 @@
 			list-style-type: none;
 			margin: 0;
 			padding: 0;
+			overflow: hidden;
+			background-color: black;
+			position: fixed;
+			top: 0;
+			width: 100%;
 		}
 		li 
 		{
-			display: inline;
+			float: left;
+		}
+		li a 
+		{
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+		li a:hover:not(.active) 
+		{
+			background-color: #111;
 		}
     </style>
 
@@ -53,39 +70,39 @@
 		</li>
 	</ul>
 
-	
-    <h1>Chris Dickens - UROS Placement</h1> 
+	<div style="padding:20px;margin-top:30px;">
+		<h1>Chris Dickens - UROS Placement</h1> 
 
-    <!--Button for animation 1-->
-    <p>
-      <button onclick="Animation1()">Animation 1</button> 
-    </p>
+		<!--Button for animation 1-->
+		<p>
+			<button onclick="Animation1()">Animation 1</button> 
+		</p>
 
-    <!--Button for animation 2-->
-    <p>
-      <button onclick="Animation2()">Animation 2</button> 
-    </p>
+		<!--Button for animation 2-->
+		<p>
+			<button onclick="Animation2()">Animation 2</button> 
+		</p>
 
-    <!--Displays AnimationBox1 on page-->
-    <div id="AnimationBox1" style="display:none;"> 
-    </div>
+		<!--Displays AnimationBox1 on page-->
+		<div id="AnimationBox1" style="display:none;"> 
+		</div>
       
-    <!--Displays AnimationBox2 on page-->
-    <div id="AnimationBox2" style="display:none;"> 
-    </div>
-      
-    <script>
-      function Animation1()
-      {
-        document.getElementById('AnimationBox2').style.display = "none";
-        document.getElementById('AnimationBox1').style.display = "block";
-      }
-      function Animation2()
-      {
-        document.getElementById('AnimationBox1').style.display = "none";
-        document.getElementById('AnimationBox2').style.display = "block";
-      }
-    </script>
+		<!--Displays AnimationBox2 on page-->
+		<div id="AnimationBox2" style="display:none;"> 
+		</div>
+     </div>
+	<script>
+		function Animation1()
+		{
+			document.getElementById('AnimationBox2').style.display = "none";
+			document.getElementById('AnimationBox1').style.display = "block";
+		}
+		function Animation2()
+		{		
+			document.getElementById('AnimationBox1').style.display = "none";
+			document.getElementById('AnimationBox2').style.display = "block";
+		}
+	</script>
       
 	<footer class="w3-center w3-black w3-padding-16">
 	<p>
