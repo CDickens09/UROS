@@ -40,4 +40,6 @@
 20/07/2017 - Changed back to nav bar
 20/07/2017 - Used [11] to try and improve nav bar
 20/07/2017 - Changed box width so it matched user device
-20/07/2017 - removed header so nav bar can take its place
+20/07/2017 - Removed header so nav bar can take its place
+20/07/2017 - Nav Bar improved
+20/07/2017 - Links to pages work just need to add different content to them
