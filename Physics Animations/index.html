@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>Chris Dickens - UROS Placement</title>
+		<meta charset="utf-8">
+		<!--Sets width of window to equal the width of viewers device so no side scroll bar is necessary-->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    </head>
+	
+	<header class="w3-center w3-black w3-padding-16">
+	<p>
+		<a href="http://www.lincoln.ac.uk/home/smp/" title="Header" target="_blank" class="w3-hover-text-blue">Chris Dickens</a>, University of Lincoln, UK
+	</p>
+	</header>
+	
+	<style>
+      #AnimationBox1
+      {
+        width: 500px;
+        height: 500px;
+        position: relative;
+        background: red;
+      }
+      #AnimationBox2
+      {
+      width: 500px;
+      height: 500px;
+      position: relative;
+      background: blue;
+      }  
+    </style>
+
+    <body>
+    <h1>Chris Dickens - UROS Placement</h1> 
+
+    <!--Button for animation 1-->
+    <p>
+      <button onclick="Animation1()">Animation 1</button> 
+    </p>
+
+    <!--Button for animation 2-->
+    <p>
+      <button onclick="Animation2()">Animation 2</button> 
+    </p>
+
+    <!--Displays AnimationBox1 on page-->
+    <div id="AnimationBox1" style="display:none;"> 
+    </div>
+      
+    <!--Displays AnimationBox2 on page-->
+    <div id="AnimationBox2" style="display:none;"> 
+    </div>
+      
+    <script>
+      function Animation1()
+      {
+        document.getElementById('AnimationBox2').style.display = "none";
+        document.getElementById('AnimationBox1').style.display = "block";
+      }
+      function Animation2()
+      {
+        document.getElementById('AnimationBox1').style.display = "none";
+        document.getElementById('AnimationBox2').style.display = "block";
+      }
+    </script>
+      
+	<footer class="w3-center w3-black w3-padding-16">
+	<p>
+		<a href="http://www.lincoln.ac.uk/home/smp/" title="School Footer" target="_blank" class="w3-hover-text-blue">School of Mathematics and Physics</a>, University of Lincoln, UK
+	</p>
+	</footer>
+	</body>
+</html>
