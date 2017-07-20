@@ -6,6 +6,7 @@
 		<!--Sets width of window to equal the width of viewers device so no side scroll bar is necessary-->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     </head>
 	
 	<style>
@@ -55,23 +56,14 @@
     <body>
 	
 	<!--Navigation bar for page-->
-	<ul class="nav navbar-nav navbar-right">
-		<li>
-			<a href="/UROS/">Home</a>
-		</li>
-		<li>
-			<a href="/UROS/Physics Animations/">Physics Animations</a>
-		</li>
-		<li>
-			<a href="/UROS/Blog/">Blog</a>
-		</li>
-		<li>
-			<a href="/UROS/Next Steps/">Next Steps</a>
-		</li>
-		<li>
-			<a href="/UROS/About/">About</a>
-		</li>
-	</ul>
+	<div id="navigation-placeholder">
+	</div>
+	<script>
+	$(function()
+	{
+		$("#navigation-placeholder").load("navigation.html");
+	});
+	</script>
 
 	<div style="padding:20px;margin-top:30px;">
 		<h1>Chris Dickens - UROS Placement</h1> 
