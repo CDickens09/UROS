@@ -34,7 +34,7 @@
 		{
 			nav ul
 			{
-				display: none;
+				display: inline-block;
 			}
 			nav select 
 			{
