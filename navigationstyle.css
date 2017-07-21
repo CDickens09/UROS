@@ -25,6 +25,33 @@
 		{
 			background-color: #111;
 		}
+		nav select ul 
+		{
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: black;
+			position: fixed;
+			top: 0;
+			width: 100%;
+		}
+		nav select li 
+		{
+			float: left;
+		}
+		nav select li a 
+		{
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+		nav select li a:hover:not(.active) 
+		{
+			background-color: #111;
+		}
 		nav select 
 		{
 			display: none;
@@ -37,6 +64,6 @@
 			}
 			nav select 
 			{
-				display: inline-block;
+				display: block;
 			}
 		}
