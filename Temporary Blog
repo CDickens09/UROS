@@ -63,3 +63,4 @@
 21/07/2017 - Successfully mad working styelsheet so navigation can now be edited more easily, used [13] to ensure my stylesheet took precedence
 21/07/2017 - Added dropdown menu for small devices for easier mobile viewing
 21/07/2017 - Dropdown appeared on mobile browser but wasnt working (Did not actually direct you anywhere when clicked)
+21/07/2017 - 0px padding worked on small devices but wasnt a good solution in the long run so further investigation into dropdwons was done

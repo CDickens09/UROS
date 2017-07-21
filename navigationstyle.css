@@ -26,14 +26,18 @@
 			background-color: #111;
 		}
 		
-		nav select 
+		nav dropdown 
 		{
 			display: none;
 		}
 		@media (max-width: 500px)
 		{
-			nav li a
+			nav ul
 			{
-				padding: 0px;
+				display: none;
+			}
+			nav dropdown 
+			{
+				display: inline-block;
 			}
 		}
