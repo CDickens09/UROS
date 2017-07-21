@@ -1,15 +1,4 @@
-		nav navbar-nav
-		{
-			list-style-type: none;
-			margin: 0;
-			padding: 0;
-			overflow: hidden;
-			background-color: black;
-			position: relative;
-			top: 0;
-			width: 100%;
-		}
-		.pagination
+		navbar
 		{
 			margin: 0px;
 		}
