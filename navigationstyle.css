@@ -25,7 +25,7 @@
 		{
 			background-color: #111;
 		}
-		nav select ul 
+		nav dropdown ul 
 		{
 			list-style-type: none;
 			margin: 0;
@@ -36,11 +36,11 @@
 			top: 0;
 			width: 100%;
 		}
-		nav select li 
+		nav dropdown li 
 		{
 			float: left;
 		}
-		nav select li a 
+		nav dropdown li a 
 		{
 			display: block;
 			color: white;
@@ -48,11 +48,20 @@
 			padding: 14px 16px;
 			text-decoration: none;
 		}
-		nav select li a:hover:not(.active) 
+		nav dropdown li a:hover:not(.active) 
 		{
 			background-color: #111;
 		}
-		nav select 
+		nav > ul > ul
+		{
+			position: absolute;
+			visibility: hidden;
+		}
+		nav ul li:hover > ul
+		{
+			visibility: visible;
+		}
+		nav dropdown 
 		{
 			display: none;
 		}
@@ -62,7 +71,7 @@
 			{
 				display: none;
 			}
-			nav select 
+			nav dropdown 
 			{
 				display: block;
 			}
