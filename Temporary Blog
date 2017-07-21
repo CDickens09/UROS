@@ -58,3 +58,4 @@
 20/07/2017 - Noticed an issue on mobile devices where because navigation bar goes onto two lines text is covered, will attempt to fix this tomorrow with some form of dropdown menu
 21/07/2017 - Tested with several ways of making snapshot image button for animation
 21/07/2017 - Having major issues, either get button with image and no link or link with no image
+21/07/2017 - Got button working
