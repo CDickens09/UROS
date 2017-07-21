@@ -60,4 +60,4 @@
 21/07/2017 - Having major issues, either get button with image and no link or link with no image
 21/07/2017 - Got button working
 21/07/2017 - Decided to create style sheet for nav bar so any changes would be present on all pages without changing each index.html
-21/07/2017 - Successfully mad working styelsheet so navigation can now be edited more easily
+21/07/2017 - Successfully mad working styelsheet so navigation can now be edited more easily, used [13] to ensure my stylesheet took precedence
