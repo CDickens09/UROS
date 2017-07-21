@@ -1,4 +1,4 @@
-		ul 
+		nav ul 
 		{
 			list-style-type: none;
 			margin: 0;
@@ -9,11 +9,11 @@
 			top: 0;
 			width: 100%;
 		}
-		li 
+		nav li 
 		{
 			float: left;
 		}
-		li a 
+		nav li a 
 		{
 			display: block;
 			color: white;
@@ -21,12 +21,22 @@
 			padding: 14px 16px;
 			text-decoration: none;
 		}
-		li a:hover:not(.active) 
+		nav li a:hover:not(.active) 
 		{
 			background-color: #111;
 		}
-		button 
+		nav select 
 		{
-			padding: 0px;
-			border: 0px;
+			display: none;
+		}
+		@media (max-width: 500px)
+		{
+			nav ul
+			{
+				display: none;
+			}
+			nav select 
+			{
+				display: inline-block;
+			}
 		}
