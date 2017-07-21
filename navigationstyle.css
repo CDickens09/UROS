@@ -32,12 +32,8 @@
 		}
 		@media (max-width: 500px)
 		{
-			nav ul
+			nav li a
 			{
-				display: inline-block;
-			}
-			nav select 
-			{
-				display: inline-block;
+				padding: 0px;
 			}
 		}
