@@ -26,6 +26,34 @@
 			background-color: #111;
 		}
 		
+		nav dropdown ul 
+		{
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: black;
+			position: fixed;
+			top: 0;
+			width: 100%;
+		}
+		nav dropdown li 
+		{
+			float: left;
+		}
+		nav dropdown li a 
+		{
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+		nav dropdown li a:hover:not(.active) 
+		{
+			background-color: #111;
+		}
+		
 		nav dropdown 
 		{
 			display: none;
