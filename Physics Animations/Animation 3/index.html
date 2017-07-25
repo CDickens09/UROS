@@ -19,11 +19,11 @@
 			canvas 
 			{
 				border: 1px solid black;
-				height: 500px;
+				height: 400px;
 				margin: 10px;
-				width: 99%;
+				width: 98%;
 			}
-			.pagecolumn
+			.bigscreen
 			{
 				-webkit-column-count: 2;
 				-webkit-column-gap: 20px;
@@ -31,13 +31,27 @@
 			input[type=range]
 			{
 			margin: 10px;
-			width:90%;
+			width:92%;
+			}
+			@media(max-width: 700px)
+			{
+				#bigscreen
+				{
+					display:none;
+				}
+			}
+			@media(min-width: 700px)
+			{
+				#smallscreen
+				{
+					display:none;
+				}
 			}
 			output
 			{
 			margin: 10px;
 			padding:0px;
-			width:90%;
+			width:92%;
 			}
 			p
 			{
@@ -59,9 +73,18 @@
 	});
 	</script>
 	
+	<div class="bigscreen"> 
+		<canvas></canvas>
+		<h1>Frequency</h1>
+		<input id="f" type="range" min="0" max="100" value="4" step="1">
+		<output for="f" id="output_f">4</output>
 	
+		<h1>Amplitude</h1>
+		<input id="a" type="range" min="0" max="100" value="4" step="1">
+		<output for="a" id="output_a">4</output>
+	</div>
 	
-	<div class="pagecolumn"> 
+	<div class="smallscreen"> 
 		<canvas></canvas>
 		<h1>Frequency</h1>
 		<input id="f" type="range" min="0" max="100" value="4" step="1">
