@@ -19,7 +19,9 @@
 			canvas 
 			{
 				border: 1px solid black;
+				height: 500px;
 				margin: 10px;
+				width: 500px;
 			}
 			input[type=range]
 			{
@@ -69,8 +71,8 @@
 	<script>
 		var canvas = document.querySelector("canvas"),
 			ctx = canvas.getContext("2d"),
-			cHeight = innerHeight-77,
-			cWidth = innerWidth,
+			cHeight = canvas.height,
+			cWidth = canvas.width,
 			frequency = document.querySelector("#f").value,
 			amplitude = document.querySelector("#a").value,
 			x = 0,
