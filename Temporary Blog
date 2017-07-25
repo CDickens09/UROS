@@ -89,3 +89,6 @@
 25/04/2017 - Created a third animation page to later put the sin wave on
 25/04/2017 - Used http://cssdeck.com/labs to see if code worked seperately before compiling
 25/04/2017 - Successfully uploaded working wave animation
+25/04/2017 - Tweaked Animation so it functioned better
+25/04/2017 - Adjusted layout so sliders were adjacent to graph
+25/04/2017 - Made seperate display for smaller screens so graph wasnt too small
