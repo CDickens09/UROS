@@ -67,16 +67,10 @@
 	<output for="a" id="output_a">4</output>
 	
 	<script>
-		var setCanvasSize = function() 
-							{
-								canvas.width = window.innerWidth;
-								canvas.height = window.innerHeight;
-							}
-		
 		var canvas = document.querySelector("canvas"),
 			ctx = canvas.getContext("2d"),
-			cHeight = canvas.height,
-			cWidth = canvas.width,
+			cHeight = innerHeight-77,
+			cWidth = innerWidth,
 			frequency = document.querySelector("#f").value,
 			amplitude = document.querySelector("#a").value,
 			x = 0,
