@@ -21,18 +21,23 @@
 				border: 1px solid black;
 				height: 500px;
 				margin: 10px;
-				width: 90%;
+				width: 50%;
+			}
+			.pagecolumn
+			{
+				-webkit-column-count: 2;
+				-webkit-column-gap: 20px;
 			}
 			input[type=range]
 			{
 			margin: 10px;
-			width:99%;
+			width:48%;
 			}
 			output
 			{
 			margin: 10px;
 			padding:0px;
-			width:99%;
+			width:48%;
 			}
 			p
 			{
@@ -54,19 +59,18 @@
 	});
 	</script>
 	
-	<canvas></canvas>
 	
-	<div> 
+	
+	<div class="pagecolumn"> 
+		<canvas></canvas>
 		<h1>Frequency</h1>
-	</div>
-	<input id="f" type="range" min="0" max="100" fvalue="4" step="1">
-	<output for="f" id="output_f">4</output>
+		<input id="f" type="range" min="0" max="100" fvalue="4" step="1">
+		<output for="f" id="output_f">4</output>
 	
-	<div> 
 		<h1>Amplitude</h1>
+		<input id="a" type="range" min="0" max="100" value="4" step="1">
+		<output for="a" id="output_a">4</output>
 	</div>
-	<input id="a" type="range" min="0" max="100" value="4" step="1">
-	<output for="a" id="output_a">4</output>
 	
 	<script>
 		var canvas = document.querySelector("canvas"),
