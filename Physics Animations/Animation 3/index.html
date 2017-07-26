@@ -119,7 +119,7 @@
 		ctx.closePath();
 		ctx.beginPath();
 		ctx.strokeStyle = "black";
-		for(x = 0; x<cWidth; x++) 
+		for(x = 0; x<cWidth; x=x+0.5) 
 		{
 			point_y = amplitude * -Math.sin((frequency/47.665)*x) + y;
 			ctx.lineTo(x, point_y);
