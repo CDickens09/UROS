@@ -79,7 +79,8 @@
 	</script>
 	
 	<div class="pagecolumn"> 
-
+		<canvas></canvas>
+		
 		<h1>Mean</h1>
 		<input id="m" type="range" min="0" max="100" value="4" step="1">
 		<output for="m" id="output_m">4</output>
@@ -89,123 +90,58 @@
 		<output for="s" id="output_s">4</output>
 	</div>
 	
-	<script type="text/javascript">
-		var data = [];
+	<script>
+var canvas = document.querySelector("canvas"),
+			ctx = canvas.getContext("2d"),
+			cHeight = canvas.height,
+			cWidth = canvas.width,
+			gaussianConstant = 1 / Math.sqrt(2 * Math.PI)
+			mean = document.querySelector("#f").value,
+			sigma = document.querySelector("#a").value,
+			x = 0,
+			y = cHeight/2,
+			point_y = 0;
 
-		getData();
-
-		var margin = {
-				top: 20,
-				right: 20,
-				bottom: 30,
-				left: 50
-			},
-			width = 960 - margin.left - margin.right,
-			height = 500 - margin.top - margin.bottom;
-
-		var x = d3.scale.linear()
-			.range([0, width]);
-
-		var y = d3.scale.linear()
-			.range([height, 0]);
-
-		var xAxis = d3.svg.axis()
-			.scale(x)
-			.orient("bottom");
-
-		var yAxis = d3.svg.axis()
-			.scale(y)
-			.orient("left");
-
-		var line = d3.svg.line()
-			.x(function(d) {
-				return x(d.q);
-			})
-			.y(function(d) {
-				return y(d.p);
-			});
-
-		var svg = d3.select("body").append("svg")
-			.attr("width", width + margin.left + margin.right)
-			.attr("height", height + margin.top + margin.bottom)
-			.append("g")
-			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-		x.domain(d3.extent(data, function(d) {
-			return d.q;
-		}));
-		y.domain(d3.extent(data, function(d) {
-			return d.p;
-		}));
-
-		svg.append("g")
-			.attr("class", "x axis")
-			.attr("transform", "translate(0," + height + ")")
-			.call(xAxis);
-
-		svg.append("g")
-			.attr("class", "y axis")
-			.call(yAxis);
-
-		svg.append("path")
-			.datum(data)
-			.attr("class", "line")
-			.attr("d", line);
-
-		function getData() {
-
-		for (var i = 0; i < 100000; i++) {
-			q = normal() 
-			p = gaussian(q) 
-			el = {
-				"q": q,
-				"p": p
-			}
-			data.push(el)
-		};
-
-		data.sort(function(x, y) {
-			return x.q - y.q;
-		});	
-		}
-
-		function normal() {
-			var x = 0,
-				y = 0,
-				rds, c;
-			do {
-				x = Math.random() * 2 - 1;
-				y = Math.random() * 2 - 1;
-				rds = x * x + y * y;
-			} while (rds == 0 || rds > 1);
-			c = Math.sqrt(-2 * Math.log(rds) / rds);
-			return x * c;
-		}
-
-		function gaussian(x) 
+		window.onload = init;
+  
+		function init() 
 		{
-			var gaussianConstant = 1 / Math.sqrt(2 * Math.PI),
-				mean = document.querySelector("#m").value,
-				sigma = document.querySelector("#s").value;
-				
-				
-			document.querySelector("#m").addEventListener("input",
+			document.querySelector("#f").addEventListener("input",
 			function() 
 			{
-				mean = this.value;
-				document.querySelector("#output_m").value = mean;
+				frequency = this.value;
+				document.querySelector("#output_f").value = frequency;
 			}, false);
 			
-			document.querySelector("#s").addEventListener("input",
+			document.querySelector("#a").addEventListener("input",
 			function() 
 			{
-				sigma = this.value;
-				document.querySelector("#output_s").value = sigma;
-			}, false);
+				amplitude = this.value;
+				document.querySelector("#output_a").value = amplitude;
+			}, false);			
 			
-			x = (x - mean) / sigma;
-			return gaussianConstant * Math.exp(-.5 * x * x) / sigma;
-		};
+			drawSine();
+		}
+		function drawSine() 
+		{
+		ctx.clearRect(0, 0, cWidth, cHeight);
+		ctx.beginPath();
+		ctx.moveTo(0, y);
+		ctx.strokeStyle = "red";
+		ctx.lineTo(cWidth, y);
+		ctx.stroke();
+		ctx.closePath();
+		ctx.beginPath();
+		ctx.strokeStyle = "black";
+		for(x = 0; x<cWidth; x=x+0.1) 
+		{
+			point_y = gaussianConstant * Math.exp(-.5 * x * x) / sigma;;
+			ctx.lineTo(x, point_y);
+		}
+		ctx.stroke();
+		ctx.closePath();
+		requestAnimationFrame(drawSine);
+		}
 	</script>
 	
 	<footer class="w3-center w3-black">
