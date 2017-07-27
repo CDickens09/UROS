@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>Chris Dickens - UROS Placement</title>
+		<meta charset="utf-8">
+		<!--Sets width of window to equal the width of viewers device so no side scroll bar is necessary-->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://chris14552249.github.io/UROS/generalstyle.css">
+		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="//d3js.org/d3.v3.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<style>
+			body 
+			{
+				background: white;
+			}
+			canvas 
+			{
+				border: 1px solid black;
+				height: 400px;
+				margin: 5px;
+				width: 98%;
+			}
+			.pagecolumn
+			{
+				-webkit-column-count: 2;
+				-webkit-column-gap: 20px;
+			}
+			input[type=range]
+			{
+			margin: 10px;
+			width:92%;
+			}
+			@media(max-width: 700px)
+			{
+				.pagecolumn
+				{
+					-webkit-column-count: 1;
+				}
+			}
+			output
+			{
+			margin: 10px;
+			padding:0px;
+			width:92%;
+			}
+			p
+			{
+				margin: 0px;
+			}
+			.axis path, .axis line 
+			{
+				fill: none;
+				stroke: #000;
+				shape-rendering: crispEdges;
+			}
+			.line 
+			{
+				fill: none;
+				stroke: steelblue;
+				stroke-width: 1.5px;
+			}
+		</style>
+    </head>
+	
+    <body>
+	
+	<!--Navigation bar for page-->
+	<div id="aninavigation-placeholder">
+	</div>
+	
+	<script>
+	$(function()
+	{
+		$("#aninavigation-placeholder").load("../aninavigation.html");
+	});
+	</script>
+	
+	<div class="pagecolumn"> 
+
+		<h1>Mean</h1>
+		<input id="m" type="range" min="0" max="100" value="4" step="1">
+		<output for="m" id="output_m">4</output>
+	
+		<h1>Sigma</h1>
+		<input id="s" type="range" min="0" max="70" value="4" step="1">
+		<output for="s" id="output_s">4</output>
+	</div>
+	
+	<script type="text/javascript">
+		var data = [];
+
+		getData();
+
+		var margin = {
+				top: 20,
+				right: 20,
+				bottom: 30,
+				left: 50
+			},
+			width = 960 - margin.left - margin.right,
+			height = 500 - margin.top - margin.bottom;
+
+		var x = d3.scale.linear()
+			.range([0, width]);
+
+		var y = d3.scale.linear()
+			.range([height, 0]);
+
+		var xAxis = d3.svg.axis()
+			.scale(x)
+			.orient("bottom");
+
+		var yAxis = d3.svg.axis()
+			.scale(y)
+			.orient("left");
+
+		var line = d3.svg.line()
+			.x(function(d) {
+				return x(d.q);
+			})
+			.y(function(d) {
+				return y(d.p);
+			});
+
+		var svg = d3.select("body").append("svg")
+			.attr("width", width + margin.left + margin.right)
+			.attr("height", height + margin.top + margin.bottom)
+			.append("g")
+			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+		x.domain(d3.extent(data, function(d) {
+			return d.q;
+		}));
+		y.domain(d3.extent(data, function(d) {
+			return d.p;
+		}));
+
+		svg.append("g")
+			.attr("class", "x axis")
+			.attr("transform", "translate(0," + height + ")")
+			.call(xAxis);
+
+		svg.append("g")
+			.attr("class", "y axis")
+			.call(yAxis);
+
+		svg.append("path")
+			.datum(data)
+			.attr("class", "line")
+			.attr("d", line);
+
+		function getData() {
+
+		for (var i = 0; i < 100000; i++) {
+			q = normal() 
+			p = gaussian(q) 
+			el = {
+				"q": q,
+				"p": p
+			}
+			data.push(el)
+		};
+
+		data.sort(function(x, y) {
+			return x.q - y.q;
+		});	
+		}
+
+		function normal() {
+			var x = 0,
+				y = 0,
+				rds, c;
+			do {
+				x = Math.random() * 2 - 1;
+				y = Math.random() * 2 - 1;
+				rds = x * x + y * y;
+			} while (rds == 0 || rds > 1);
+			c = Math.sqrt(-2 * Math.log(rds) / rds);
+			return x * c;
+		}
+
+		function gaussian(x) 
+		{
+			var gaussianConstant = 1 / Math.sqrt(2 * Math.PI),
+				mean = document.querySelector("#m").value,
+				sigma = document.querySelector("#s").value;
+				
+				
+			document.querySelector("#m").addEventListener("input",
+			function() 
+			{
+				mean = this.value;
+				document.querySelector("#output_m").value = mean;
+			}, false);
+			
+			document.querySelector("#s").addEventListener("input",
+			function() 
+			{
+				sigma = this.value;
+				document.querySelector("#output_s").value = sigma;
+			}, false);
+			
+			x = (x - mean) / sigma;
+			return gaussianConstant * Math.exp(-.5 * x * x) / sigma;
+		};
+	</script>
+	
+	<footer class="w3-center w3-black">
+	<p>
+		<a href="http://www.lincoln.ac.uk/home/smp/" title="School Footer" target="_blank" class="w3-hover-text-blue">School of Mathematics and Physics</a>, University of Lincoln, UK
+	</p>
+	</footer>
+	</body>
+</html>
