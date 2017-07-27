@@ -22,22 +22,10 @@
 			{
 				background: white;
 			}
-			canvas 
-			{
-				border: 1px solid black;
-				height: 400px;
-				margin: 5px;
-				width: 98%;
-			}
 			.input 
 			{
 				font-size: 14pt;
 				margin: 5px;
-			}
-			input[type=range]
-			{
-			margin: 10px;
-			width:92%;
 			}
 			label 
 			{
@@ -50,31 +38,9 @@
 				stroke: steelblue;
 				stroke-width: 1.5px;
 			}
-			@media(max-width: 700px)
-			{
-				.pagecolumn
-				{
-					-webkit-column-count: 1;
-				}
-			}
-			output
-			{
-			margin: 10px;
-			padding:0px;
-			width:92%;
-			}
-			p
-			{
-				margin: 0px;
-			}
 			p.input 
 			{
 				text-align: center;
-			}
-			.pagecolumn
-			{
-				-webkit-column-count: 2;
-				-webkit-column-gap: 20px;
 			}
 		</style>
     </head>
@@ -107,8 +73,8 @@
 				bottom: 30,
 				left: 50
 			},
-		width = 960 - margin.left - margin.right,
-		height = 450 - margin.top - margin.bottom;
+		width = innerWidth,
+		height = innerHeight-77;
 		base_mean = 0;
 		base_sigma = 1;
 
@@ -129,8 +95,8 @@
 			.orient("left");
 			
 		var svg = d3.select("body").append("svg")
-			.attr("width", width + margin.left + margin.right)
-			.attr("height", height + margin.top + margin.bottom)
+			.attr("width", width)
+			.attr("height", height)
 			.append("g")
 			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
