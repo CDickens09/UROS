@@ -83,7 +83,6 @@ var canvas = document.querySelector("canvas"),
 			ctx = canvas.getContext("2d"),
 			cHeight = canvas.height,
 			cWidth = canvas.width,
-			gaussianConstant = 1 / Math.sqrt(2 * Math.PI)
 			mean = document.querySelector("#m").value,
 			sigma = document.querySelector("#s").value,
 			x = 0,
@@ -123,7 +122,7 @@ var canvas = document.querySelector("canvas"),
 		ctx.strokeStyle = "black";
 		for(x = 0; x<cWidth; x=x+0.1) 
 		{
-			point_y = gaussianConstant * Math.exp(-.5 * x * x) / sigma;;
+			point_y = Math.exp(-.5 * ((x - mean) / sigma)*((x - mean) / sigma)) /(sigma * Math.sqrt(2*pi));
 			ctx.lineTo(x, point_y);
 		}
 		ctx.stroke();
