@@ -114,3 +114,4 @@
 31/07/2017 - Created a test animation page for testing improvements
 31/07/2017 - Set up new sin animation with svg for smoother curve
 31/07/2017 - Had issues getting the wave to appear if variables were editable
+31/07/2017 - Created add wave button that draws a wave with set atributes on graph
