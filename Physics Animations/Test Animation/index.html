@@ -12,35 +12,14 @@
 		<script src="//d3js.org/d3.v3.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<style>
-			.axis path, .axis line 
-			{
-				fill: none;
-				stroke: #000;
-				shape-rendering: crispEdges;
-			}
 			body 
 			{
 				background: white;
+				height:100%;
 			}
-			.input 
+			div
 			{
-				font-size: 14pt;
-				margin: 5px;
-			}
-			label 
-			{
-				display: inline-block; 
-				text-align: right;
-			}
-			.line 
-			{
-				fill: none;
-				stroke: steelblue;
-				stroke-width: 1.5px;
-			}
-			p.input 
-			{
-				text-align: center;
+				height:100%;
 			}
 		</style>
     </head>
@@ -66,138 +45,40 @@
 		<input class="input inputbox" type="checkbox" id="axisscalecheck" value="lock" checked>Scale axes</input>
 	</p>
 	
+		width = ,
+		height = ;
+
+
+	<div id="sine_wave">
+    
+		<svg width="innerWidth-70" height="innerHeight-179">
+		<line x1="0" y1="100" x2="1000" y2="100" style="stroke:black;stroke-width:1"/>
+		</svg>
+	</div>
+	
 	<script>
-		var margin = 
-		{
-			top: 20,
-			right: 20,
-			bottom: 30,
-			left: 50
-		},
-		width = innerWidth-70,
-		height = innerHeight-179;
-		base_amplitude = 0;
-		base_frequency = 1;
-
-		z_limit = 4;
-
-		var x = d3.scale.linear()
-			.range([0, width]);
-
-		var y = d3.scale.linear()
-			.range([height, 0]);
-
-		var xAxis = d3.svg.axis()
-			.scale(x)
-			.orient("bottom");
-
-		var yAxis = d3.svg.axis()
-			.scale(y)
-			.orient("left");
-			
-		var svg = d3.select("body").append("svg")
-			.attr("width", width + margin.left + margin.right)
-			.attr("height", height + margin.top + margin.bottom)
-			.append("g")
-			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-		svg.append("g")
-			.attr("class", "x axis")
-			.attr("transform", "translate(0," + height + ")")
-			.call(xAxis);
-
-		svg.append("g")
-			.attr("class", "y axis")
-			.call(yAxis);
-
-		svg.append("path")
-			.attr("class", "line")
-			.attr("id", "base_normal_curve")
-
-		update(x, y);
-
-		d3.selectAll(".inputbox").on("input", function()
-		{
-			update(x, y)
-		});
-
-		d3.select("#axislockcheck").on("change", function()
-		{
-			update(x, y)
-		});
-
-		function update(x, y)
-		{
-			m = Number(d3.select("#amplitudebox").property("value"));
-			s = Number(d3.select("#frequencybox").property("value"));
-			if(!isNaN(m) && !isNaN(s) && s != 0)
-			{
-				if(d3.select("#axisscalecheck").property("checked"))
-				{
-					update_x_axis(m, s, x);		
-				}
-
-				data = get_data(m, s, x);
-
-				if(d3.select("#axisscalecheck").property("checked"))
-				{
-					update_y_axis(data, m, s, y);
-				}
-
-				var line = d3.svg.line()
-					.x(function(d) 
-					{
-						return x(d.q);
-					})
-					.y(function(d) 
-					{
-						return y(d.p);
-					});	
-
-				d3.select("#base_normal_curve")
-					.datum(data)
-					.transition()
-					.attr("d", line);
-			}
-		}
-
-		function update_x_axis(m, s, x)
-		{
-			x.domain([m - (z_limit * s), m + (z_limit * s)]);
-			d3.select(".x").transition().call(xAxis);		
-		}
-
-		function update_y_axis(data, m, s, y)
-		{
-			y.domain(d3.extent(data, function(d) 
-			{
-				return d.p;
-			}));
-			d3.select(".y").transition().call(yAxis);
-		}
-
-		function get_data(amplitude, frequency, x)
-		{
-			data = [];
-
-			for (i = 0; i < width; i++) 
-			{
-				q = x.invert(i);
-				p = gaussian_pdf(q, amplitude, frequency);
-				el = {
-					"q": q,
-					"p": p
-				}
-				data.push(el);
-			};
-			return data 	
-		}
-
-		function gaussian_pdf(x, amplitude, frequency) 
-		{
-			x=x+1;
-			return amplitude * -Math.sin((frequency/47.665)*x);
+		var svg = document.getElementById('sine_wave').children[0];
+		var origin = { //origin of axes
+			x: 0,
+			y: 100,
 		};
+		var amplitude = 50; // wave amplitude
+		var freq = 0.05; // angular frequency
+		var phase = 0; // phase angle
+		var width = 
+		for (var i = 0; i < width; i++) {
+			var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+
+			line.setAttribute('x1', (i - 1) + origin.x);
+			line.setAttribute('y1', Math.sin(freq * (i - 1 + phase)) * amplitude + origin.y);
+
+			line.setAttribute('x2', i + origin.x);
+			line.setAttribute('y2', Math.sin(freq * (i + phase)) * amplitude + origin.y);
+
+			line.setAttribute('style', "stroke:black;stroke-width:1");
+
+			svg.appendChild(line);
+		}
 	</script>
 	
 	<footer class="w3-center w3-black">
