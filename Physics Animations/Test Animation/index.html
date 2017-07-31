@@ -65,7 +65,7 @@
 		function addwave()
 		{
 			var amplitude = document.getElementById('amplitudebox').value;
-			var frequency = document.getElementById('frequencybox').value/(window.innerWidth*6.35);
+			var frequency = document.getElementById('frequencybox').value/(window.innerWidth/6.35);
 			for (var i = 0; i < width; i++) 
 			{
 				var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
