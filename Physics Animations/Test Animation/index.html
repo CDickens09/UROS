@@ -42,7 +42,6 @@
 		<input class="input inputbox" type="text" id="amplitudebox" size="3" value="20"/>
 		<label class="input" for="stdevbox">Frequency:</label>
 		<input class="input inputbox" type="text" id="frequencybox" size="3" value="5"/>
-		<input class="input inputbox" type="checkbox" id="axisscalecheck" value="lock" checked>Scale axes</input>
 	</p>
 
 	<div id="sine_wave">
@@ -58,8 +57,8 @@
 			x: 0,
 			y: 100,
 		};
-		var amplitude = 50; 
-		var freq = 0.05; 
+		var amplitude = Number(d3.select("#amplitudebox").property("value"));
+		var freq = Number(d3.select("#frequencybox").property("value"));
 		var phase = 0; 
 		var width = 1000
 		
