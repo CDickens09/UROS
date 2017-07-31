@@ -193,11 +193,9 @@
 			return data 	
 		}
 
-		function gaussian_pdf(x, mean, sigma) 
+		function gaussian_pdf(x, amplitude, frequency) 
 		{
-			var gaussianConstant = 1 / Math.sqrt(2 * Math.PI),
-			x = (x - mean) / sigma;
-			return gaussianConstant * Math.exp(-.5 * x * x) / sigma;
+			return amplitude * -Math.sin((frequency/47.665)*x)
 		};
 	</script>
 	
