@@ -36,8 +36,8 @@
 		$("#aninavigation-placeholder").load("../aninavigation.html");
 	});
 	</script>
-	
-	<p class="input">
+
+	<div id="sine_wave" class="pagecolumn"> 
 		<h1>Frequency</h1>
 		<input id="f" type="range" min="0" max="100" value="4" step="1">
 		<output for="f" id="output_f">4</output>
@@ -45,9 +45,7 @@
 		<h1>Amplitude</h1>
 		<input id="a" type="range" min="0" max="70" value="4" step="1">
 		<output for="a" id="output_a">4</output>
-	</p>
-
-	<div id="sine_wave">
+	
 		<svg width="1000" height="1000">
 			<line x1="0" y1="100" x2="1000" y2="100" style="stroke:black;stroke-width:1"/>
 		</svg>
