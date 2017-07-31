@@ -59,10 +59,10 @@
 	</script>
 	
 	<p class="input">
-		<label class="input" for="meanbox">Mean: </label>
-		<input class="input inputbox" type="text" id="meanbox" size="3" value="0"/>
-		<label class="input" for="stdevbox">Standard deviation:</label>
-		<input class="input inputbox" type="text" id="stdevbox" size="3" value="1"/>
+		<label class="input" for="amplitudebox">Amplitude: </label>
+		<input class="input inputbox" type="text" id="amplitudebox" size="3" value="0"/>
+		<label class="input" for="stdevbox">Frequency:</label>
+		<input class="input inputbox" type="text" id="frequencybox" size="3" value="1"/>
 		<input class="input inputbox" type="checkbox" id="axisscalecheck" value="lock" checked>Scale axes</input>
 	</p>
 	
@@ -76,8 +76,8 @@
 		},
 		width = innerWidth-70,
 		height = innerHeight-179;
-		base_mean = 0;
-		base_sigma = 1;
+		base_amplitude = 0;
+		base_frequency = 1;
 
 		z_limit = 4;
 
@@ -128,8 +128,8 @@
 
 		function update(x, y)
 		{
-			m = Number(d3.select("#meanbox").property("value"));
-			s = Number(d3.select("#stdevbox").property("value"));
+			m = Number(d3.select("#amplitudebox").property("value"));
+			s = Number(d3.select("#frequencybox").property("value"));
 			if(!isNaN(m) && !isNaN(s) && s != 0)
 			{
 				if(d3.select("#axisscalecheck").property("checked"))
@@ -176,14 +176,14 @@
 			d3.select(".y").transition().call(yAxis);
 		}
 
-		function get_data(mean, sigma, x)
+		function get_data(amplitude, frequency, x)
 		{
 			data = [];
 
 			for (i = 0; i < width; i++) 
 			{
 				q = x.invert(i);
-				p = gaussian_pdf(q, mean, sigma);
+				p = gaussian_pdf(q, amplitude, frequency);
 				el = {
 					"q": q,
 					"p": p
@@ -193,11 +193,9 @@
 			return data 	
 		}
 
-		function gaussian_pdf(x, mean, sigma) 
+		function gaussian_pdf(x, amplitude, frequency) 
 		{
-			var gaussianConstant = 1 / Math.sqrt(2 * Math.PI),
-			x = (x - mean) / sigma;
-			return gaussianConstant * Math.exp(-.5 * x * x) / sigma;
+			return amplitude * -Math.sin((frequency/47.665)*x)
 		};
 	</script>
 	
