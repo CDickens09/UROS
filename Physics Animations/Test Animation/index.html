@@ -42,7 +42,7 @@
 		<input class="input inputbox" type="text" id="amplitudebox" size="3" value="20"/>
 		<label class="input" for="frequencybox">Frequency:</label>
 		<input class="input inputbox" type="text" id="frequencybox" size="3" value="0.01"/>
-		<button type="button" onclick="updatewave()">Add Wave</button>
+		<button type="button" onclick="addwave()">Add Wave</button>
 	</div>
 	
 	<div id="sine_wave"> 
@@ -62,10 +62,10 @@
 		var phase = 0; 
 		var width = 1000
 		
-		function updatewave()
+		function addwave()
 		{
 			var amplitude = document.getElementById('amplitudebox').value;
-			var frequency = document.getElementById('frequencybox').value/(2*PI);
+			var frequency = document.getElementById('frequencybox').value/6.28;
 			for (var i = 0; i < width; i++) 
 			{
 				var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
