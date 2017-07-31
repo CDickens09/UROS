@@ -60,10 +60,9 @@
 	
 	<p class="input">
 		<label class="input" for="amplitudebox">Amplitude: </label>
-		<input class="input inputbox" type="text" id="amplitudebox" size="3" value="0"/>
+		<input class="input inputbox" type="text" id="amplitudebox" size="3" value="20"/>
 		<label class="input" for="stdevbox">Frequency:</label>
 		<input class="input inputbox" type="text" id="frequencybox" size="3" value="1"/>
-		<input class="input inputbox" type="checkbox" id="axisscalecheck" value="lock" checked>Scale axes</input>
 	</p>
 	
 	<script>
@@ -86,14 +85,6 @@
 
 		var y = d3.scale.linear()
 			.range([height, 0]);
-
-		var xAxis = d3.svg.axis()
-			.scale(x)
-			.orient("bottom");
-
-		var yAxis = d3.svg.axis()
-			.scale(y)
-			.orient("left");
 			
 		var svg = d3.select("body").append("svg")
 			.attr("width", width + margin.left + margin.right)
@@ -128,22 +119,10 @@
 
 		function update(x, y)
 		{
-			m = Number(d3.select("#amplitudebox").property("value"));
-			s = Number(d3.select("#frequencybox").property("value"));
-			if(!isNaN(m) && !isNaN(s) && s != 0)
+			a = Number(d3.select("#amplitudebox").property("value"));
+			f = Number(d3.select("#frequencybox").property("value"));
+			if(!isNaN(a) && !isNaN(f) && f != 0)
 			{
-				if(d3.select("#axisscalecheck").property("checked"))
-				{
-					update_x_axis(m, s, x);		
-				}
-
-				data = get_data(m, s, x);
-
-				if(d3.select("#axisscalecheck").property("checked"))
-				{
-					update_y_axis(data, m, s, y);
-				}
-
 				var line = d3.svg.line()
 					.x(function(d) 
 					{
@@ -161,21 +140,6 @@
 			}
 		}
 
-		function update_x_axis(m, s, x)
-		{
-			x.domain([m - (z_limit * s), m + (z_limit * s)]);
-			d3.select(".x").transition().call(xAxis);		
-		}
-
-		function update_y_axis(data, m, s, y)
-		{
-			y.domain(d3.extent(data, function(d) 
-			{
-				return d.p;
-			}));
-			d3.select(".y").transition().call(yAxis);
-		}
-
 		function get_data(amplitude, frequency, x)
 		{
 			data = [];
@@ -183,7 +147,7 @@
 			for (i = 0; i < width; i++) 
 			{
 				q = x.invert(i);
-				p = gaussian_pdf(q, amplitude, frequency);
+				p = sin(q, amplitude, frequency);
 				el = {
 					"q": q,
 					"p": p
@@ -193,10 +157,10 @@
 			return data 	
 		}
 
-		function gaussian_pdf(x, amplitude, frequency) 
+		function sin(x, amplitude, frequency) 
 		{
 			x=x+1;
-			return amplitude * -Math.sin((frequency/47.665)*x);
+			return amplitude * -Math.sin((frequency)*x);
 		};
 	</script>
 	
