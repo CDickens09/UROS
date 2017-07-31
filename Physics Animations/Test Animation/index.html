@@ -46,23 +46,25 @@
 	</p>
 
 	<div id="sine_wave">
-    
 		<svg width="1000" height="1000">
-		<line x1="0" y1="100" x2="1000" y2="100" style="stroke:black;stroke-width:1"/>
+			<line x1="0" y1="100" x2="1000" y2="100" style="stroke:black;stroke-width:1"/>
 		</svg>
 	</div>
 	
 	<script>
 		var svg = document.getElementById('sine_wave').children[0];
-		var origin = { //origin of axes
+		var origin = 
+		{ 
 			x: 0,
 			y: 100,
 		};
-		var amplitude = 50; // wave amplitude
-		var freq = 0.05; // angular frequency
-		var phase = 0; // phase angle
-		var width = 
-		for (var i = 0; i < width; i++) {
+		var amplitude = 50; 
+		var freq = 0.05; 
+		var phase = 0; 
+		var width = 1000
+		
+		for (var i = 0; i < width; i++) 
+		{
 			var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
 
 			line.setAttribute('x1', (i - 1) + origin.x);
