@@ -195,7 +195,8 @@
 
 		function gaussian_pdf(x, amplitude, frequency) 
 		{
-			return amplitude * -Math.sin((frequency/47.665)*x)
+			x=x+1;
+			return amplitude * -Math.sin((frequency/47.665)*x);
 		};
 	</script>
 	
