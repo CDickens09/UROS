@@ -37,14 +37,11 @@
 	});
 	</script>
 
-	<div id="sine_wave" class="pagecolumn"> 
-		<h1>Frequency</h1>
-		<input id="f" type="range" min="0" max="100" value="4" step="1">
-		<output for="f" id="output_f">4</output>
-	
-		<h1>Amplitude</h1>
-		<input id="a" type="range" min="0" max="70" value="4" step="1">
-		<output for="a" id="output_a">4</output>
+	<div id="sine_wave"> 
+		<label class="input" for="amplitudebox">Amplitude: </label>
+		<input class="input inputbox" type="text" id="amplitudebox" size="3" value="20"/>
+		<label class="input" for="frequencybox">Frequency:</label>
+		<input class="input inputbox" type="text" id="frequencybox" size="3" value="0.01"/>
 	
 		<svg width="1000" height="1000">
 			<line x1="0" y1="100" x2="1000" y2="100" style="stroke:black;stroke-width:1"/>
@@ -58,47 +55,24 @@
 			x: 0,
 			y: 100,
 		};
-		var amplitude = document.querySelector("#a").value;
-		var frequency = document.querySelector("#f").value;
+		var amplitude = Number(d3.select("#amplitudebox").property("value"));
+		var frequency = Number(d3.select("#frequencybox").property("value"));
 		var phase = 0; 
 		var width = 1000
 		
-		window.onload = init;
-		
-		function init() 
+		for (var i = 0; i < width; i++) 
 		{
-			document.querySelector("#f").addEventListener("input",
-			function() 
-			{
-				frequency = this.value;
-				document.querySelector("#output_f").value = frequency;
-			}, false);
-			
-			document.querySelector("#a").addEventListener("input",
-			function() 
-			{
-				amplitude = this.value;
-				document.querySelector("#output_a").value = amplitude;
-			}, false);	
-			
-			drawSine();
-		}
-		function drawSine() 
-		{
-			for (var i = 0; i < width; i++) 
-			{
-				var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+			var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
 
-				line.setAttribute('x1', (i - 1) + origin.x);
-				line.setAttribute('y1', Math.sin(frequency * (i - 1 + phase)) * amplitude + origin.y);
+			line.setAttribute('x1', (i - 1) + origin.x);
+			line.setAttribute('y1', Math.sin(frequency * (i - 1 + phase)) * amplitude + origin.y);
 
-				line.setAttribute('x2', i + origin.x);
-				line.setAttribute('y2', Math.sin(frequency * (i + phase)) * amplitude + origin.y);
+			line.setAttribute('x2', i + origin.x);
+			line.setAttribute('y2', Math.sin(frequency * (i + phase)) * amplitude + origin.y);
 
-				line.setAttribute('style', "stroke:black;stroke-width:1");
+			line.setAttribute('style', "stroke:black;stroke-width:1");
 
-				svg.appendChild(line);
-			}
+			svg.appendChild(line);
 		}
 	</script>
 	
