@@ -86,7 +86,7 @@
 		function removewave()
 		{
 			var svg = document.getElementById('sine_wave');
-			svg.select("line").remove();
+			d3.select("svg").select("line").remove();
 		}
 	</script>
 	
