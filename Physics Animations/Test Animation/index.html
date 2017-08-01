@@ -41,7 +41,7 @@
 		<label class="input" for="amplitudebox">Amplitude: </label>
 		<input class="input inputbox" type="text" id="amplitudebox" size="3" value="20"/>
 		<label class="input" for="frequencybox">Frequency:</label>
-		<input class="input inputbox" type="text" id="frequencybox" size="3" value="0.01"/>
+		<input class="input inputbox" type="text" id="frequencybox" size="3" value="20"/>
 		<button type="button" onclick="addwave()">Add Wave</button>
 		<button type="button" onclick="removewaves()">Remove Waves</button>
 	</div>
@@ -60,7 +60,7 @@
 		};
 		
 		var phase = 0; 
-		var width = window.innerWidth;
+		var width = ;
 		
 		function addwave()
 		{
@@ -92,7 +92,7 @@
 			var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
 
 			line.setAttribute('x1', 0);
-			line.setAttribute('y1', 100);
+			line.setAttribute('y1', window.innerWidth);
 
 			line.setAttribute('x2', 100%);
 			line.setAttribute('y2', 100);
