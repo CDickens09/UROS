@@ -88,7 +88,7 @@
 		function removewave()
 		{
 			var svg = document.getElementById('sine_wave').children[count];
-			svg.removeChild();
+			svg.removeChild(svg.lastChild);
 			count = count - 1;
 		}
 	</script>
