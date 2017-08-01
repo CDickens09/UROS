@@ -101,10 +101,7 @@
 		function clear()
 		{
 			var svg = document.getElementById('sine_wave').children[0];
-			while (svg.firstChild != svg.lastChild) 
-			{
-			svg.removeChild(svg.lastChild);
-			}
+			$(svg).children().not(':first').remove();
 		}
 	</script>
 	
