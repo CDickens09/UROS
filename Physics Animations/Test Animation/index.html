@@ -86,7 +86,10 @@
 		function removewaves()
 		{
 			var svg = document.getElementById('sine_wave').children[0];
+			for (var i = 0; i < width; i++) 
+			{
 			svg.removeChild(svg.lastChild);
+			}
 		}
 	</script>
 	
