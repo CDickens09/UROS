@@ -86,7 +86,7 @@
 		function removewaves()
 		{
 			var svg = document.getElementById('sine_wave');
-			$("svg:last").remove();
+			$("svg.line:last").remove();
 			
 			svg = document.getElementById('sine_wave').children[0];
 			var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
