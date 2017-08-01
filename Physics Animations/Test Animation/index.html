@@ -61,7 +61,8 @@
 		};
 		
 		var phase = 0; 
-		var width = window.innerWidth
+		var width = window.innerWidth;
+		var count = 0;
 		
 		function addwave()
 		{
@@ -78,14 +79,16 @@
 				line.setAttribute('y2', Math.sin(frequency * (i + phase)) * amplitude + origin.y);
 
 				line.setAttribute('style', "stroke:black;stroke-width:1");
-
+				
+				count = count + 1;
 				svg.appendChild(line);
 			}
 		}
 		
 		function removewave()
 		{
-			 svg.removeChild(svg.lastChild);
+			 svg.removeChild(count);
+			 count = count - 1;
 		}
 	</script>
 	
