@@ -92,16 +92,20 @@
 		function removewave()
 		{
 			var svg = document.getElementById('sine_wave').children[0];
-			for (var i = 0; i < width; i++) 
+			if(svg.firstChild == svg.lastChild)
+			else
 			{
-			svg.removeChild(svg.lastChild);
+				for (var i = 0; i < width; i++) 
+				{
+				svg.removeChild(svg.lastChild);
+				}
 			}
 		}
 		
 		function clear()
 		{
 			var svg = document.getElementById('sine_wave').children[0];
-			while(true) 
+			while(svg.lastChild) 
 			{
 			svg.removeChild(svg.lastChild);
 			}
