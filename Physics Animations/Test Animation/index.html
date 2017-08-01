@@ -49,7 +49,7 @@
 		<input class="input inputbox" type="text" id="frequencybox" size="3" value="20"/>
 		<button type="button" onclick="addwave()">Add Wave</button>
 		<button type="button" onclick="removewave()">Remove Wave</button>
-		<button type="button" onclick="clear()">Clear</button>
+		<button type="button" onclick="removeall()">Remove All Waves</button>
 	</div>
 	
 	<div id="sine_wave"> 
@@ -98,7 +98,7 @@
 			}
 		}
 		
-		function clear()
+		function removeall()
 		{
 			var svg = document.getElementById('sine_wave').children[0];
 			for (var i = 0; i < width; i++) 
