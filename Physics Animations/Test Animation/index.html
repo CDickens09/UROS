@@ -92,8 +92,7 @@
 		function removewave()
 		{
 			var svg = document.getElementById('sine_wave').children[0];
-			if(svg.firstChild == svg.lastChild)
-			else
+			if(svg.firstChild != svg.lastChild)
 			{
 				for (var i = 0; i < width; i++) 
 				{
