@@ -83,6 +83,7 @@
 				
 				svg.appendChild(line);
 				count = count + 1;
+				return count;
 			}
 		}
 		
@@ -94,6 +95,7 @@
 			svg.removeChild(svg.lastChild);
 			}
 			count = count - 1;
+			return count;
 		}
 		
 		function clear()
@@ -103,6 +105,8 @@
 			{
 			svg.removeChild(svg.lastChild);
 			}
+			count = 0;
+			return count;
 		}
 	</script>
 	
