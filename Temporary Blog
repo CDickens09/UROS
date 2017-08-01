@@ -117,3 +117,4 @@
 31/07/2017 - Created add wave button that draws a wave with set atributes on graph
 01/08/2017 - Looked into svg child nodes as possible way for removing waves
 01/08/2017 - Made working Remove wave button to remove last wave
+01/08/2017 - Added Clear button to clear all waves
