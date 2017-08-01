@@ -62,7 +62,6 @@
 		
 		var phase = 0; 
 		var width = window.innerWidth;
-		var count = 0;
 		
 		function addwave()
 		{
@@ -82,8 +81,6 @@
 				line.setAttribute('style', "stroke:black;stroke-width:1");
 				
 				svg.appendChild(line);
-				count = count + 1;
-				return count;
 			}
 		}
 		
@@ -94,19 +91,15 @@
 			{
 			svg.removeChild(svg.lastChild);
 			}
-			count = count - 1;
-			return count;
 		}
 		
 		function clear()
 		{
 			var svg = document.getElementById('sine_wave').children[0];
-			for (var i = 0; i < width * count; i++) 
+			while (svg.firstChild != svg.lastChild) 
 			{
 			svg.removeChild(svg.lastChild);
 			}
-			count = 0;
-			return count;
 		}
 	</script>
 	
