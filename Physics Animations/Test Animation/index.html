@@ -101,7 +101,7 @@
 		function clear()
 		{
 			var svg = document.getElementById('sine_wave').children[0];
-			while(svg.hasChildNodes()) 
+			for (var i = 0; i < node.childNodes.length; i++)
 			{
 			svg.removeChild(svg.lastChild);
 			}
