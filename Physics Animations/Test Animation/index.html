@@ -101,7 +101,11 @@
 		function clear()
 		{
 			var svg = document.getElementById('sine_wave').children[0];
-			svg.removeChild("line");
+			var len = $(".svg").children().length;
+			for (var i = 0; i < len; i++) 
+			{
+				svg.removeChild(svg.lastChild);
+			}
 			var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
 
 			line.setAttribute('x1', 0);
