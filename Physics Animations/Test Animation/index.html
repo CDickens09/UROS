@@ -44,6 +44,7 @@
 		<input class="input inputbox" type="text" id="frequencybox" size="3" value="20"/>
 		<button type="button" onclick="addwave()">Add Wave</button>
 		<button type="button" onclick="removewave()">Remove Wave</button>
+		<button type="button" onclick="clear()">Clear</button>
 	</div>
 	
 	<div id="sine_wave"> 
@@ -61,6 +62,7 @@
 		
 		var phase = 0; 
 		var width = window.innerWidth;
+		var count = 0;
 		
 		function addwave()
 		{
@@ -80,6 +82,7 @@
 				line.setAttribute('style', "stroke:black;stroke-width:1");
 				
 				svg.appendChild(line);
+				count = count + 1;
 			}
 		}
 		
@@ -87,6 +90,16 @@
 		{
 			var svg = document.getElementById('sine_wave').children[0];
 			for (var i = 0; i < width; i++) 
+			{
+			svg.removeChild(svg.lastChild);
+			}
+			count = count - 1;
+		}
+		
+		function clear()
+		{
+			var svg = document.getElementById('sine_wave').children[0];
+			for (var i = 0; i < width * count; i++) 
 			{
 			svg.removeChild(svg.lastChild);
 			}
