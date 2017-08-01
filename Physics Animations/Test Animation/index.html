@@ -61,11 +61,10 @@
 		
 		var phase = 0; 
 		var width = window.innerWidth;
-		var count = 0;
 		
 		function addwave()
 		{
-			var svg = document.getElementById('sine_wave').children[count];
+			var svg = document.getElementById('sine_wave').children[1];
 			var amplitude = document.getElementById('amplitudebox').value;
 			var frequency = document.getElementById('frequencybox').value/(window.innerWidth/6.35);
 			for (var i = 0; i < width; i++) 
@@ -81,15 +80,13 @@
 				line.setAttribute('style', "stroke:black;stroke-width:1");
 				
 				svg.appendChild(line);
-				count = count + 1;
 			}
 		}
 		
 		function removewave()
 		{
 			var svg = document.getElementById('sine_wave');
-			svg.removeChild(count);
-			count = count - 1;
+			svg.removeChild(svg.childNodes[0]);
 		}
 	</script>
 	
