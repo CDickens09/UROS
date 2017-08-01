@@ -65,13 +65,27 @@
 		
 		function addwave()
 		{
+			var amplitude = document.getElementById('amplitudebox').value;
+			var frequency = document.getElementById('frequencybox').value/(window.innerWidth/6.35);
+			for (var i = 0; i < width; i++) 
+			{
+				var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
 
+				line.setAttribute('x1', (i - 1) + origin.x);
+				line.setAttribute('y1', Math.sin(frequency * (i - 1 + phase)) * amplitude + origin.y);
+
+				line.setAttribute('x2', i + origin.x);
+				line.setAttribute('y2', Math.sin(frequency * (i + phase)) * amplitude + origin.y);
+
+				line.setAttribute('style', "stroke:black;stroke-width:1");
+				
+				svg.appendChild(line);
+			}
 		}
 		
 		function removewave()
 		{
-			 svg.removeChild(line);			
-			 var amplitude = document.getElementById('amplitudebox').value;
+			var amplitude = document.getElementById('amplitudebox').value;
 			var frequency = document.getElementById('frequencybox').value/(window.innerWidth/6.35);
 			for (var i = 0; i < width; i++) 
 			{
