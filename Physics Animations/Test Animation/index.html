@@ -85,21 +85,8 @@
 		
 		function removewaves()
 		{
-			var svg = document.getElementById('sine_wave');
-			$("svg.line:last").remove();
-			
-			svg = document.getElementById('sine_wave').children[0];
-			var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-
-			line.setAttribute('x1', 0);
-			line.setAttribute('y1', 100);
-
-			line.setAttribute('x2', window.innerWidth);
-			line.setAttribute('y2', 100);
-
-			line.setAttribute('style', "stroke:black;stroke-width:1");
-
-			svg.appendChild(line);
+			var svg = document.getElementById('sine_wave').children[0];
+			$("svg:last").remove();
 		}
 	</script>
 	
