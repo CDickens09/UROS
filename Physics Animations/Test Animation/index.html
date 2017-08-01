@@ -101,7 +101,21 @@
 		function clear()
 		{
 			var svg = document.getElementById('sine_wave').children[0];
-			$(svg).children().not(':first').remove();
+			while(true) 
+			{
+			svg.removeChild(svg.lastChild);
+			}
+			var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+
+			line.setAttribute('x1', 0);
+			line.setAttribute('y1', 100);
+
+			line.setAttribute('x2', window.innerWidth);
+			line.setAttribute('y2', 100);
+
+			line.setAttribute('style', "stroke:black;stroke-width:1");
+				
+			svg.appendChild(line);
 		}
 	</script>
 	
