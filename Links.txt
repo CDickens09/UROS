@@ -12,3 +12,4 @@
 [12] https://bl.ocks.org/mbostock/9539958 - Animation 1
 [13] https://stackoverflow.com/questions/16913131/can-one-css-file-take-priority-over-another-css-file
 [14] https://bl.ocks.org/mbostock/3231298 - Animation 2
+[15] https://www.w3schools.com/graphics/svg_intro.asp
