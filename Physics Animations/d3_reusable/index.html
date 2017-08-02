@@ -80,6 +80,8 @@
 	  var phase = 0; 
 	  var width = window.innerWidth;
 	  var data = []
+          var data_history = []
+          var new_data_history = []
           var offsety = 0
           var numwaves = 0
 	  for (var i = 0; i < width; i++) {
@@ -113,20 +115,38 @@
                   .x(function(d) {return +d.x})
                   .y(function(d) {return +d.y});
 
-              var amplitude = document.getElementById('amplitudebox').value;
+              amplitude = document.getElementById('amplitudebox').value;
               var frequency = document.getElementById('frequencybox').value/(window.innerWidth/6.35);
 	  
 	      for (var i = 0; i < width; i++) {
-                  new_data.push({x:i + origin.x,y: Math.sin(frequency * (i + phase)) * amplitude + origin.y + 2*offsety + 10});
+                  new_data.push({x:i + origin.x,y:  Math.sin(frequency * (i + phase)) * amplitude  + origin.y + 2*offsety + 10});
                   data[i] = data[i] + Math.sin(frequency * (i + phase)) * amplitude
           	  }
+              data_history.push(data.concat());
+              new_data_history.push(new_data.concat());
               svg.append("path")
                   .attr("id","data")
                   .attr("d", valueline(new_data));
-              offsety += +amplitude
-              //console.log("offsety",offsety)
-              totalwave(data)
-              numwaves++
+              offsety += +amplitude;
+              //console.log("offsety",offsety);
+              totalwave(data) ;
+              numwaves++ ;
+          }
+  
+          function removelast() {
+              var valueline = d3.svg.line()
+                  .x(function(d) {return +d.x})
+                  .y(function(d) {return +d.y});
+              d3.selectAll("#data").remove()
+              new_data_history.pop()
+              data_history.pop()
+              for (var i=0; i < new_data_history.length; i++){
+                  svg.append("path")
+                      .attr("id","data")
+                      .attr("d", valueline(new_data_history[i]));
+              }
+              console.log(data_history)
+              totalwave(data_history[data_history.length-1])
           }
     
           function removeall() {
