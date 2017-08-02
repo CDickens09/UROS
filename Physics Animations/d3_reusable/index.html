@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>Chris Dickens - UROS Placement</title>
+		<meta charset="utf-8">
+		<!--Sets width of window to equal the width of viewers device so no side scroll bar is necessary-->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://chris14552249.github.io/UROS/generalstyle.css">
+		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="https://d3js.org/d3.v3.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<style>
+			body 
+			{
+				background: white;
+				height:100%;
+			}
+			div
+			{
+				height:100%;
+			}
+			svg
+			{
+				height:100%;
+				width:100%;
+			}
+
+                 path { 
+                     stroke: steelblue;
+                     stroke-width: 2;
+                     fill: none;
+                      }
+		</style>
+    </head>
+	
+    <body>
+	
+	<!--Navigation bar for page-->
+	<div id="aninavigation-placeholder">
+	</div>
+	
+	<script>
+	$(function()
+	{
+		$("#aninavigation-placeholder").load("../aninavigation.html");
+	});
+	</script>
+
+	<div>
+		<label class="input" for="amplitudebox">Amplitude: </label>
+		<input class="input inputbox" type="text" id="amplitudebox" size="3" value="20"/>
+		<label class="input" for="frequencybox">Frequency:</label>
+		<input class="input inputbox" type="text" id="frequencybox" size="3" value="20"/>
+		<button type="button" onclick="addwave()">Add Wave</button>
+		<button type="button" onclick="removelast()">Remove Last Wave</button>
+		<button type="button" onclick="removeall()">Remove All Waves</button>
+	</div>
+	
+	<div id="sine_wave1"> 
+		<svg>
+			<line x1="0" y1="00" x2="100%" y2="00" style="stroke:blue;stroke-width:3"/>
+		</svg>
+	</div>
+
+	<div id="tot_wave"> 
+		<svg>
+			<line x1="0" y1="00" x2="100%" y2="00" style="stroke:blue;stroke-width:3"/>
+		</svg>
+        </div>
+	
+	<script>
+	  var origin = 
+	  { 
+	  x: 0,
+	  y: 60,
+	  };
+		
+	  var phase = 0; 
+	  var width = window.innerWidth;
+	  var data = []
+          var offsety = 0
+	  for (var i = 0; i < width; i++) {
+             data[i] = 0
+          }
+          var margin = {top: 10, right: 20, bottom: 10, left: 50},
+          width = 600 - margin.left - margin.right,
+          height = 150 - margin.top - margin.bottom;
+
+          var svg = d3.select("#sine_wave1")
+             .append("svg")
+                  .attr("width", width + margin.left + margin.right)
+                  .attr("height", height + margin.top + margin.bottom)
+              .append("g")
+                  .attr("transform",
+                  "translate(" + margin.left + "," + margin.top + ")");
+
+          var svg_tot = d3.select("#tot_wave")
+             .append("svg")
+                  .attr("width", width + margin.left + margin.right)
+                  .attr("height", height + margin.top + margin.bottom)
+              .append("g")
+                  .attr("transform",
+                  "translate(" + margin.left + "," + margin.top + ")");
+		
+	  function addwave()
+	  {
+              //console.log("entering addwave")
+	      var new_data = []
+              var valueline = d3.svg.line()
+                  .x(function(d) {return +d.x})
+                  .y(function(d) {return +d.y});
+
+              var amplitude = document.getElementById('amplitudebox').value;
+              var frequency = document.getElementById('frequencybox').value/(window.innerWidth/6.35);
+	  
+	      for (var i = 0; i < width; i++) {
+                  new_data.push({x:i + origin.x,y: Math.sin(frequency * (i + phase)) * amplitude + origin.y + offsety});
+                  data[i] = data[i] + Math.sin(frequency * (i + phase)) * amplitude
+          	  }
+              svg.append("path")
+                  .attr("d", valueline(new_data));
+              offsety += +amplitude
+              //console.log("offsety",offsety)
+              totalwave(data)
+          }
+       
+          function totalwave(data) {
+                d3.select("#total_data").remove()
+                var my_data = []
+                var valueline = d3.svg.line()
+                    .x(function(d) {return +d.x})
+                    .y(function(d) {return +d.y});
+
+                for (var i = 0; i < width; i++) {
+                    my_data.push({x:i+origin.x, y:data[i] + origin.y})
+                }
+                svg_tot.append("path")
+                  .attr("id","total_data")
+                  .attr("d", valueline(my_data));
+                //console.log("writing total wave")
+          } 
+			      
+	</script>
+	
+	<footer class="w3-center w3-black">
+	<p>
+		<a href="http://www.lincoln.ac.uk/home/smp/" title="School Footer" target="_blank" class="w3-hover-text-blue">School of Mathematics and Physics</a>, University of Lincoln, UK
+	</p>
+	</footer>
+	</body>
+</html>
