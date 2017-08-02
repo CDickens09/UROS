@@ -50,7 +50,7 @@
 
 	<div>
 		<label class="input" for="amplitudebox">Amplitude: </label>
-		<input class="input inputbox" type="text" id="amplitudebox" size="3" value="20"/>
+		<input class="input inputbox" type="text" id="amplitudebox" size="3" value="10"/>
 		<label class="input" for="frequencybox">Frequency:</label>
 		<input class="input inputbox" type="text" id="frequencybox" size="3" value="20"/>
 		<button type="button" onclick="addwave()">Add Wave</button>
@@ -81,6 +81,7 @@
 	  var width = window.innerWidth;
 	  var data = []
           var offsety = 0
+          var numwaves = 0
 	  for (var i = 0; i < width; i++) {
              data[i] = 0
           }
@@ -116,14 +117,27 @@
               var frequency = document.getElementById('frequencybox').value/(window.innerWidth/6.35);
 	  
 	      for (var i = 0; i < width; i++) {
-                  new_data.push({x:i + origin.x,y: Math.sin(frequency * (i + phase)) * amplitude + origin.y + offsety});
+                  new_data.push({x:i + origin.x,y: Math.sin(frequency * (i + phase)) * amplitude + origin.y + 2*offsety + 10});
                   data[i] = data[i] + Math.sin(frequency * (i + phase)) * amplitude
           	  }
               svg.append("path")
+                  .attr("id","data")
                   .attr("d", valueline(new_data));
               offsety += +amplitude
               //console.log("offsety",offsety)
               totalwave(data)
+              numwaves++
+          }
+    
+          function removeall() {
+                var j = numwaves -1
+                d3.selectAll("#data").remove()
+                numwaves = 0
+                offsety = 0
+	        for (var i = 0; i < width; i++) {
+                    data[i] = 0
+                }
+                totalwave(data)
           }
        
           function totalwave(data) {
@@ -141,7 +155,7 @@
                   .attr("d", valueline(my_data));
                 //console.log("writing total wave")
           } 
-			      
+		      
 	</script>
 	
 	<footer class="w3-center w3-black">
