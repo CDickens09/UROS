@@ -82,6 +82,7 @@
 	  var data = []
           var data_history = []
           var new_data_history = []
+          var offset_history = []
           var offsety = 0
           var numwaves = 0
 	  for (var i = 0; i < width; i++) {
@@ -106,14 +107,15 @@
               .append("g")
                   .attr("transform",
                   "translate(" + margin.left + "," + margin.top + ")");
+ 
+          var valueline = d3.svg.line()
+                  .x(function(d) {return +d.x})
+                  .y(function(d) {return +d.y});
 		
 	  function addwave()
 	  {
               //console.log("entering addwave")
 	      var new_data = []
-              var valueline = d3.svg.line()
-                  .x(function(d) {return +d.x})
-                  .y(function(d) {return +d.y});
 
               amplitude = document.getElementById('amplitudebox').value;
               var frequency = document.getElementById('frequencybox').value/(window.innerWidth/6.35);
@@ -124,6 +126,7 @@
           	  }
               data_history.push(data.concat());
               new_data_history.push(new_data.concat());
+              offset_history.push(amplitude)
               svg.append("path")
                   .attr("id","data")
                   .attr("d", valueline(new_data));
@@ -134,19 +137,20 @@
           }
   
           function removelast() {
-              var valueline = d3.svg.line()
-                  .x(function(d) {return +d.x})
-                  .y(function(d) {return +d.y});
               d3.selectAll("#data").remove()
               new_data_history.pop()
               data_history.pop()
-              for (var i=0; i < new_data_history.length; i++){
+              offset_history.pop()
+              last =  new_data_history.length
+              for (var i=0; i < last; i++){
                   svg.append("path")
                       .attr("id","data")
                       .attr("d", valueline(new_data_history[i]));
               }
-              console.log(data_history)
-              totalwave(data_history[data_history.length-1])
+              data = data_history[last-1].concat()
+              offsety = offset_history[last-1]
+              totalwave(data)
+              numwaves--
           }
     
           function removeall() {
@@ -163,9 +167,6 @@
           function totalwave(data) {
                 d3.select("#total_data").remove()
                 var my_data = []
-                var valueline = d3.svg.line()
-                    .x(function(d) {return +d.x})
-                    .y(function(d) {return +d.y});
 
                 for (var i = 0; i < width; i++) {
                     my_data.push({x:i+origin.x, y:data[i] + origin.y})
