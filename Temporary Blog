@@ -120,3 +120,4 @@
 01/08/2017 - Added Clear button to clear all waves
 01/08/2017 - Changed clear button to remove all waves as clear function caused issues
 03/08/2017 - Added Phase Shift button
+03/08/2017 - Noted that phase shift doesnt work in equation as it isnt relative to window width like frequency is
