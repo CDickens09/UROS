@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>Chris Dickens - UROS Placement</title>
+		<meta charset="utf-8">
+		<!--Sets width of window to equal the width of viewers device so no side scroll bar is necessary-->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://chris14552249.github.io/UROS/generalstyle.css">
+		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="//d3js.org/d3.v3.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<style>
+			body 
+			{
+				background: white;
+				height:100%;
+			}
+			div
+			{
+				height:100%;
+			}
+			svg
+			{
+				height:100%;
+				width:100%;
+			}
+		</style>
+    </head>
+	
+    <body>
+	
+	<!--Navigation bar for page-->
+	<div id="aninavigation-placeholder">
+	</div>
+	
+	<script>
+	$(function()
+	{
+		$("#aninavigation-placeholder").load("../aninavigation.html");
+	});
+	</script>
+
+	<div>
+		<label class="input" for="amplitudebox">Amplitude: </label>
+		<input class="input inputbox" type="text" id="amplitudebox" size="3" value="20"/>
+		<label class="input" for="frequencybox">Frequency:</label>
+		<input class="input inputbox" type="text" id="frequencybox" size="3" value="20"/>
+		<label class="input" for="phasebox">Phase Shift:</label>
+		<input class="input inputbox" type="text" id="phasebox" size="3" value="0"/>
+		<button type="button" onclick="addwave()">Add Wave</button>
+		<button type="button" onclick="removelast()">Remove Last Wave</button>
+		<button type="button" onclick="removeall()">Remove All Waves</button>
+	</div>
+	
+	<div id="sine_wave"> 
+		<svg>
+			<line x1="0" y1="100" x2="100%" y2="100" style="stroke:black;stroke-width:1"/>
+		</svg>
+	</div>
+	
+	<script>
+		var origin = 
+		{ 
+			x: 0,
+			y: 100,
+		};
+		
+		var width = window.innerWidth;
+		
+		function addwave()
+		{
+			var svg = document.getElementById('sine_wave').children[0];
+			var amplitude = document.getElementById('amplitudebox').value;
+			var frequency = document.getElementById('frequencybox').value/(window.innerWidth/(Math.PI*2));
+			var phase = document.getElementById('phasebox').value/(window.innerWidth/(Math.PI*2))*1000;
+			for (var i = 0; i < width; i++) 
+			{
+				var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+
+				line.setAttribute('x1', (i - 1) + origin.x);
+				line.setAttribute('y1', Math.sin(frequency * (i - 1 + ((6/7) * phase))) * amplitude + origin.y);
+
+				line.setAttribute('x2', i + origin.x);
+				line.setAttribute('y2', Math.sin(frequency * (i + ((6/7) * phase))) * amplitude + origin.y);
+
+				line.setAttribute('style', "stroke:black;stroke-width:1");
+				
+				svg.appendChild(line);
+			}
+		}
+		
+		function removelast()
+		{
+			var svg = document.getElementById('sine_wave').children[0];
+			for (var i = 0; i < width; i++) 
+			{
+			svg.removeChild(svg.lastChild);
+			}
+		}
+		
+		function removeall()
+		{
+			var svg = document.getElementById('sine_wave').children[0];
+			var len = svg.childNodes.length;
+			for (var i = 0; i < len; i++) 
+			{
+				svg.removeChild(svg.lastChild);
+			}
+			var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+
+			line.setAttribute('x1', 0);
+			line.setAttribute('y1', 100);
+
+			line.setAttribute('x2', window.innerWidth);
+			line.setAttribute('y2', 100);
+
+			line.setAttribute('style', "stroke:black;stroke-width:1");
+				
+			svg.appendChild(line);
+		}
+	</script>
+	
+	<footer class="w3-center w3-black">
+	<p>
+		<a href="http://www.lincoln.ac.uk/home/smp/" title="School Footer" target="_blank" class="w3-hover-text-blue">School of Mathematics and Physics</a>, University of Lincoln, UK
+	</p>
+	</footer>
+	</body>
+</html>
