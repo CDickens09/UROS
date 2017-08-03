@@ -47,6 +47,8 @@
 		<input class="input inputbox" type="text" id="amplitudebox" size="3" value="20"/>
 		<label class="input" for="frequencybox">Frequency:</label>
 		<input class="input inputbox" type="text" id="frequencybox" size="3" value="20"/>
+		<label class="input" for="phasebox">Phase Shift:</label>
+		<input class="input inputbox" type="text" id="phasebox" size="3" value="0"/>
 		<button type="button" onclick="addwave()">Add Wave</button>
 		<button type="button" onclick="removelast()">Remove Last Wave</button>
 		<button type="button" onclick="removeall()">Remove All Waves</button>
@@ -65,7 +67,6 @@
 			y: 100,
 		};
 		
-		var phase = 0; 
 		var width = window.innerWidth;
 		
 		function addwave()
@@ -73,6 +74,7 @@
 			var svg = document.getElementById('sine_wave').children[0];
 			var amplitude = document.getElementById('amplitudebox').value;
 			var frequency = document.getElementById('frequencybox').value/(window.innerWidth/6.35);
+			var phase = document.getElementById('phasebox').value;
 			for (var i = 0; i < width; i++) 
 			{
 				var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
