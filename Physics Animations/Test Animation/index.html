@@ -152,6 +152,7 @@
 				.attr("d", valueline(new_data_history[i]));
 			}
 			
+			data = data_history[last-1].concat() //
 			offsety = +offset_history[last-1]
 			totalwave(data)
 			numwaves--
