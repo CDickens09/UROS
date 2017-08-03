@@ -139,23 +139,26 @@
 
 		function removelast() 
 		{
-			d3.selectAll("#data").remove()
-			new_data_history.pop()
-			data_history.pop()
-			offset_history.pop()
-			last =  new_data_history.length
-			
-			for (var i=0; i < last; i++)
+			if(data_history.length > 0)
 			{
-				svg.append("path")
-				.attr("id","data")
-				.attr("d", valueline(new_data_history[i]));
+				d3.selectAll("#data").remove()
+				new_data_history.pop()
+				data_history.pop()
+				offset_history.pop()
+				last =  new_data_history.length
+				
+				for (var i=0; i < last; i++)
+				{
+					svg.append("path")
+					.attr("id","data")
+					.attr("d", valueline(new_data_history[i]));
+				}
+				
+				data = data_history[last-1].concat()
+				offsety = +offset_history[last-1]
+				totalwave(data)
+				numwaves--
 			}
-			
-			data = data_history[last-1].concat() //
-			offsety = +offset_history[last-1]
-			totalwave(data)
-			numwaves--
 		}
 
 		function removeall() 
