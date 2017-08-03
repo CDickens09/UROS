@@ -73,16 +73,13 @@
    var offsety = 0
    var numwaves = 0
    //totalwave(data)
-
    var margin = {top: 20, right: 20, bottom: 20, left: 50},
        width = window.innerWidth - margin.left - margin.right,
        height = window.innerHeight/4 - margin.top - margin.bottom;
-
    var origin ={
          x: 0,
          y: 0,
    };
-
    var svg = d3.select("#sine_wave1")
      .append("svg")
        .attr("width", width + margin.left + margin.right)
@@ -90,7 +87,6 @@
      .append("g")
        .attr("transform",
        "translate(" + margin.left + "," + margin.top + ")");
-
    var svg_tot = d3.select("#tot_wave")
      .append("svg")
        .attr("width", width + margin.left + margin.right)
@@ -98,24 +94,19 @@
      .append("g")
        .attr("transform",
        "translate(" + margin.left + "," + margin.top + ")");
-
    var valueline = d3.svg.line()
    .x(function(d) {return +d.x})
    .y(function(d) {return +d.y});
-
    for (var i = 0; i < width; i++) {
      data[i] = 0
    }
    totalwave(data)
-
    function addwave()
    {
      //console.log("entering addwave")
      var new_data = []
-     console.log(offsety)
      amplitude = document.getElementById('amplitudebox').value;
-     var frequency = document.getElementById('frequencybox').value/(window.innerWidth/6.35);
-
+     var frequency = document.getElementById('frequencybox').value / width * Math.PI * 2;
      for (var i = 0; i < width; i++) {
        new_data.push({x:i + origin.x,y:  Math.sin(frequency * (i + phase)) * amplitude  + origin.y + 2*offsety});
        data[i] = data[i] + Math.sin(frequency * (i + phase)) * amplitude
@@ -127,28 +118,29 @@
        .attr("d", valueline(new_data));
      offsety += +amplitude;
      offset_history.push(offsety)
-     //console.log("offsety",offsety);
      totalwave(data) ;
      numwaves++ ;
    }
-
    function removelast() {
      d3.selectAll("#data").remove()
-     new_data_history.pop()
-     data_history.pop()
-     offset_history.pop()
-     last =  new_data_history.length
-     for (var i=0; i < last; i++){
-       svg.append("path")
-         .attr("id","data")
-         .attr("d", valueline(new_data_history[i]));
+     if (numwaves > 1) {
+       new_data_history.pop()
+       data_history.pop()
+       offset_history.pop()
+       last =  new_data_history.length
+       for (var i=0; i < last; i++){
+         svg.append("path")
+           .attr("id","data")
+           .attr("d", valueline(new_data_history[i]));
+       }
+       data = data_history[last-1].concat()
+       offsety = +offset_history[last-1].splice()
+       totalwave(data)
+       numwaves--
+     } else {
+       removeall()
      }
-     data = data_history[last-1].concat()
-     offsety = +offset_history[last-1]
-     totalwave(data)
-     numwaves--
    }
-
    function removeall() {
      var j = numwaves -1
      d3.selectAll("#data").remove()
@@ -158,8 +150,10 @@
        data[i] = 0
      }
      totalwave(data)
+	 offset_history = []
+     new_data_history = []
+     data_history = []
    }
-
    function totalwave(data) {
      d3.select("#total_data").remove()
      var my_data = []
@@ -169,9 +163,7 @@
      svg_tot.append("path")
        .attr("id","total_data")
        .attr("d", valueline(my_data));
-     console.log("total wave", my_data)
    }
-
    </script>
    <footer class="w3-center w3-black">
      <p>
