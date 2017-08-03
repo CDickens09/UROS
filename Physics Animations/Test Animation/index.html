@@ -139,7 +139,7 @@
 
 		function removelast() 
 		{
-			if(data_history.length >= 1)
+			if(data_history.length > 1)
 			{
 				d3.selectAll("#data").remove()
 				new_data_history.pop()
