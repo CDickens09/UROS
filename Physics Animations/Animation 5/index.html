@@ -80,10 +80,10 @@
 				var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
 
 				line.setAttribute('x1', (i - 1) + origin.x);
-				line.setAttribute('y1', Math.sin(frequency * (i - 1 + phase) * amplitude + origin.y);
+				line.setAttribute('y1', Math.sin(frequency * (i - 1 + phase)) * amplitude + origin.y);
 
 				line.setAttribute('x2', i + origin.x);
-				line.setAttribute('y2', Math.sin(frequency * (i + phase) * amplitude + origin.y);
+				line.setAttribute('y2', Math.sin(frequency * (i + phase)) * amplitude + origin.y);
 
 				line.setAttribute('style', "stroke:black;stroke-width:1");
 				
