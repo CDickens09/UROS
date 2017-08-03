@@ -21,16 +21,6 @@
 			{
 				height:100%;
 			}
-			p
-			{
-				margin-left: 0px;
-			}
-			path
-			{
-				stroke: steelblue;
-				stroke-width: 1;
-				fill: none;
-			}
 			svg
 			{
 				height:100%;
@@ -64,134 +54,71 @@
 		<button type="button" onclick="removeall()">Remove All Waves</button>
 	</div>
 	
-	<p id="sine_wave">
-   </p>
-
-   <p id="tot_wave">
-   </p>
+	<div id="sine_wave"> 
+		<svg>
+			<line x1="0" y1="100" x2="100%" y2="100" style="stroke:black;stroke-width:1"/>
+		</svg>
+	</div>
 	
 	<script>
-		var data = []
-		var data_history = []
-		var new_data_history = []
-		var offset_history = []
-		var offsety = 0
-		var numwaves = 0
-
-		var margin = {top: 20, right: 20, bottom: 20, left: 10},
-			width = window.innerWidth - margin.left - margin.right,
-			height = window.innerHeight/4 - margin.top - margin.bottom;
-
-		var origin ={
-         x: 0,
-         y: 0,
+		var origin = 
+		{ 
+			x: 0,
+			y: 100,
 		};
-
-		var svg = d3.select("#sine_wave")
-			.append("svg")
-			.attr("width", width + margin.left + margin.right)
-			.attr("height", height + margin.top + margin.bottom)
-			.append("g")
-			.attr("transform","translate(" + margin.left + "," + margin.top + ")");
-
-		var svg_tot = d3.select("#tot_wave")
-			.append("svg")
-			.attr("width", width + margin.left + margin.right)
-			.attr("height", height + margin.top + margin.bottom)
-			.append("g")
-			.attr("transform","translate(" + margin.left + "," + margin.top + ")");
-
-		var valueline = d3.svg.line()
-		.x(function(d) {return +d.x})
-		.y(function(d) {return +d.y});
-
-		for (var i = 0; i < width; i++) 
-		{
-			data[i] = 0
-		}
 		
-		totalwave(data)
-
+		var width = window.innerWidth;
+		
 		function addwave()
 		{
-			var new_data = []
-			console.log(offsety)
+			var svg = document.getElementById('sine_wave').children[0];
 			var amplitude = document.getElementById('amplitudebox').value;
-			var frequency = document.getElementById('frequencybox').value / (window.innerWidth) * Math.PI * 2;
-			var phase = document.getElementById('phasebox').value / 360 * Math.PI * 2;
-
+			var frequency = document.getElementById('frequencybox').value/(window.innerWidth/(Math.PI*2));
+			var phase = document.getElementById('phasebox').value/(window.innerWidth/(Math.PI*2))*1000;
 			for (var i = 0; i < width; i++) 
 			{
-				new_data.push({x:i + origin.x,y:  Math.sin((frequency * (i - 1)) + phase) * amplitude + origin.y + 2*offsety});
-				data[i] = data[i] + Math.sin((frequency * i) + phase) * amplitude + origin.y
-			}
-			
-			data_history.push(data.concat());
-			new_data_history.push(new_data.concat());
-			svg.append("path")
-				.attr("id","data")
-				.attr("d", valueline(new_data));
-			offsety += +amplitude;
-			offset_history.push(offsety)
-			totalwave(data) ;
-			numwaves++ ;
-		}
+				var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
 
-		function removelast() 
-		{
-			if(data_history.length > 1)
-			{
-				d3.selectAll("#data").remove()
-				new_data_history.pop()
-				data_history.pop()
-				offset_history.pop()
-				last =  new_data_history.length
+				line.setAttribute('x1', (i - 1) + origin.x);
+				line.setAttribute('y1', Math.sin(frequency * (i - 1 + ((6/7) * phase))) * amplitude + origin.y);
+
+				line.setAttribute('x2', i + origin.x);
+				line.setAttribute('y2', Math.sin(frequency * (i + ((6/7) * phase))) * amplitude + origin.y);
+
+				line.setAttribute('style', "stroke:black;stroke-width:1");
 				
-				for (var i=0; i < last; i++)
-				{
-					svg.append("path")
-					.attr("id","data")
-					.attr("d", valueline(new_data_history[i]));
-				}
+				svg.appendChild(line);
+			}
+		}
+		
+		function removelast()
+		{
+			var svg = document.getElementById('sine_wave').children[0];
+			for (var i = 0; i < width; i++) 
+			{
+			svg.removeChild(svg.lastChild);
+			}
+		}
+		
+		function removeall()
+		{
+			var svg = document.getElementById('sine_wave').children[0];
+			var len = svg.childNodes.length;
+			for (var i = 0; i < len; i++) 
+			{
+				svg.removeChild(svg.lastChild);
+			}
+			var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+
+			line.setAttribute('x1', 0);
+			line.setAttribute('y1', 100);
+
+			line.setAttribute('x2', window.innerWidth);
+			line.setAttribute('y2', 100);
+
+			line.setAttribute('style', "stroke:black;stroke-width:1");
 				
-				data = data_history[last-1].concat()
-				offsety = +offset_history[last-1]
-				totalwave(data)
-				numwaves--
-			}
-			else
-			{
-				removeall()
-			}
-		}
-
-		function removeall() 
-		{
-			d3.selectAll("#data").remove()
-			numwaves = 0
-			offsety = 0
-			
-			for (var i = 0; i < width; i++) 
-			{
-				data[i] = 0
-			}
-			
-			totalwave(data)
-		}
-
-		function totalwave(data) 
-		{
-			d3.select("#total_data").remove()
-			var my_data = []
-			
-			for (var i = 0; i < width; i++) 
-			{
-				my_data.push({x:i+origin.x, y:data[i] + height/2})
-			}
-			
-			svg_tot.append("path")
-				.attr("id","total_data")
-				.attr("d", valueline(my_data));
+			svg.appendChild(line);
 		}
 	</script>
 	

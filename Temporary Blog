@@ -124,5 +124,3 @@
 03/08/2017 - Fixed phase shift issue so now have working sin animation with adjustable frequency, amplitude and phase shift
 03/08/2017 - Moved sin wave to animation 5 folder
 03/08/2017 - Added button to get to animation 5
-03/08/2017 - Started work on merged waves with aid of d3_reusable
-03/08/2017 - Incorporated phase fix from Matt

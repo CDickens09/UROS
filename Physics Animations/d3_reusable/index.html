@@ -112,9 +112,8 @@
    {
      //console.log("entering addwave")
      var new_data = []
-     console.log(offsety)
      amplitude = document.getElementById('amplitudebox').value;
-     var frequency = document.getElementById('frequencybox').value/(window.innerWidth/6.35);
+     var frequency = document.getElementById('frequencybox').value / width * Math.PI * 2;
 
      for (var i = 0; i < width; i++) {
        new_data.push({x:i + origin.x,y:  Math.sin(frequency * (i + phase)) * amplitude  + origin.y + 2*offsety});
@@ -127,26 +126,29 @@
        .attr("d", valueline(new_data));
      offsety += +amplitude;
      offset_history.push(offsety)
-     //console.log("offsety",offsety);
      totalwave(data) ;
      numwaves++ ;
    }
 
    function removelast() {
      d3.selectAll("#data").remove()
-     new_data_history.pop()
-     data_history.pop()
-     offset_history.pop()
-     last =  new_data_history.length
-     for (var i=0; i < last; i++){
-       svg.append("path")
-         .attr("id","data")
-         .attr("d", valueline(new_data_history[i]));
+     if (numwaves > 1) {
+       new_data_history.pop()
+       data_history.pop()
+       offset_history.pop()
+       last =  new_data_history.length
+       for (var i=0; i < last; i++){
+         svg.append("path")
+           .attr("id","data")
+           .attr("d", valueline(new_data_history[i]));
+       }
+       data = data_history[last-1].concat()
+       offsety = +offset_history[last-1]
+       totalwave(data)
+       numwaves--
+     } else {
+       removeall()
      }
-     data = data_history[last-1].concat()
-     offsety = +offset_history[last-1]
-     totalwave(data)
-     numwaves--
    }
 
    function removeall() {
@@ -169,7 +171,6 @@
      svg_tot.append("path")
        .attr("id","total_data")
        .attr("d", valueline(my_data));
-     console.log("total wave", my_data)
    }
 
    </script>
