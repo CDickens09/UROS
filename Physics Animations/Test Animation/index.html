@@ -152,7 +152,6 @@
 				.attr("d", valueline(new_data_history[i]));
 			}
 			
-			data = data_history[last-1].concat()
 			offsety = +offset_history[last-1]
 			totalwave(data)
 			numwaves--
@@ -160,7 +159,6 @@
 
 		function removeall() 
 		{
-			var j = numwaves -1
 			d3.selectAll("#data").remove()
 			numwaves = 0
 			offsety = 0
