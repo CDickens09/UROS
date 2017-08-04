@@ -101,11 +101,6 @@
 			.scale(y)
 			.orient("left");
 		
-		var area = d3.svg.area()
-		.x(function(d) { return x(d.date); })
-		.y0(height)
-		.y1(function(d) { return y(d.close); });
-		
 		var svg = d3.select("#user")
 			.append("svg")
 			.attr("width", width + margin.left + margin.right)
@@ -125,11 +120,6 @@
 		svg.append("path")
 			.attr("class", "line")
 			.attr("id", "base_normal_curve")
-		
-		svg.append("path")
-        .datum(data)
-        .attr("class", "area")
-        .attr("d", area);
 		
 		update(x, y);
 		
@@ -216,10 +206,20 @@
 						return y(d.p);
 					});	
 
+				var area = d3.svg.area()
+					.x(function(d) { return x(d.date); })
+					.y0(height)
+					.y1(function(d) { return y(d.close); });
+					
 				d3.select("#base_normal_curve")
 					.datum(data)
 					.transition()
 					.attr("d", line);
+					
+				svg.append("path")
+					.datum(data)
+					.attr("class", "area")
+					.attr("d", area);
 			}
 		}
 
