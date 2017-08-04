@@ -93,6 +93,7 @@
 		var offset_history = []
 		var offsety = 0
 		var numwaves = 0
+		var totamplitude = 0
 
 		var margin = {top: 20, right: 20, bottom: 20, left: 10},
 			width = window.innerWidth - margin.left - margin.right,
@@ -130,7 +131,7 @@
 
 		function addwave()
 		{
-			if(data_history.length < 8)
+			if(totamplitude * 2 < height)
 			{
 				var new_data = []
 				console.log(offsety)
@@ -153,6 +154,8 @@
 				offset_history.push(offsety)
 				totalwave(data) ;
 				numwaves++ ;
+				totamplitude += +amplitude;
+				console.log(totamplitude);
 			}
 			else
 			{
