@@ -86,7 +86,7 @@
 			left: 50
 		},
 		width = innerWidth - 70,
-		height = innerHeight / 2 - 179;
+		height = innerHeight / 2 - 119;
 		base_mean = 0;
 		base_sigma = 1;
 
@@ -211,20 +211,10 @@
 						return y(d.p);
 					});	
 
-				var area = d3.svg.area()
-					.x(function(get_data) {return q;})
-					.y0(height)
-					.y1(function(get_data) {return p;});
-					
 				d3.select("#base_normal_curve")
 					.datum(data)
 					.transition()
 					.attr("d", line);
-					
-				svg.append("path")
-					.datum(data)
-					.attr("class", "area")
-					.attr("d", area);
 			}
 		}
 
