@@ -58,9 +58,6 @@
 	});
 	</script>
 	
-	<p id="normal">
-	</p>
-	
 	<p class="input">
 		<label class="input" for="meanbox">Mean: </label>
 		<input class="input inputbox" type="text" id="meanbox" size="3" value="0"/>
@@ -70,6 +67,9 @@
 	</p>
 	
 	<p id="user">
+	</p>
+	
+	<p id="normal">
 	</p>
 	
 	<script>
@@ -101,25 +101,6 @@
 			.scale(y)
 			.orient("left");
 			
-		var svg_fixed = d3.select("#normal")
-			.attr("width", width + margin.left + margin.right)
-			.attr("height", height + margin.top + margin.bottom)
-			.append("g")
-			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-		svg_fixed.append("g")
-			.attr("class", "x axis")
-			.attr("transform", "translate(0," + height + ")")
-			.call(xAxis);
-
-		svg_fixed.append("g")
-			.attr("class", "y axis")
-			.call(yAxis);
-
-		svg_fixed.append("path")
-			.attr("class", "line")
-			.attr("id", "base_normal_curve")
-			
 		var svg = d3.select("#user").append("svg")
 			.attr("width", width + margin.left + margin.right)
 			.attr("height", height + margin.top + margin.bottom)
@@ -139,6 +120,25 @@
 			.attr("class", "line")
 			.attr("id", "base_normal_curve")
 		
+		var svg_fixed = d3.select("#normal")
+			.attr("width", width + margin.left + margin.right)
+			.attr("height", height + margin.top + margin.bottom)
+			.append("g")
+			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+		svg_fixed.append("g")
+			.attr("class", "x axis")
+			.attr("transform", "translate(0," + height + ")")
+			.call(xAxis);
+
+		svg_fixed.append("g")
+			.attr("class", "y axis")
+			.call(yAxis);
+
+		svg_fixed.append("path")
+			.attr("class", "line")
+			.attr("id", "base_normal_curve")
+			
 		update(x, y);
 
 		d3.selectAll(".inputbox").on("input", function()
