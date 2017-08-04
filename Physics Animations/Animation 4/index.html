@@ -83,6 +83,7 @@
 		width = innerWidth - 70,
 		height = innerHeight / 2 - 179;
 
+
 		z_limit = 4;
 
 		var x = d3.scale.linear()
@@ -130,10 +131,24 @@
 			update(x, y)
 		});
 
-		function data(x, y)
+		function update(x, y)
 		{
-				data = fixed_data(x);
-				
+			m = Number(d3.select("#meanbox").property("value"));
+			s = Number(d3.select("#stdevbox").property("value"));
+			if(!isNaN(m) && !isNaN(s) && s != 0)
+			{
+				if(d3.select("#axisscalecheck").property("checked"))
+				{
+					update_x_axis(m, s, x);		
+				}
+
+				data = fixed_data(m, s, x);
+
+				if(d3.select("#axisscalecheck").property("checked"))
+				{
+					update_y_axis(data, m, s, y);
+				}
+
 				var line = d3.svg.line()
 					.x(function(d) 
 					{
@@ -185,7 +200,7 @@
 
 		svg.append("path")
 			.attr("class", "line")
-			.attr("id", "user_normal_curve")
+			.attr("id", "base_normal_curve")
 
 		update(x, y);
 
@@ -227,7 +242,7 @@
 						return y(d.p);
 					});	
 
-				d3.select("#user_normal_curve")
+				d3.select("#base_normal_curve")
 					.datum(data)
 					.transition()
 					.attr("d", line);
