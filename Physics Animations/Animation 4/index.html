@@ -120,6 +120,7 @@
 		svg.append("path")
 			.attr("class", "line")
 			.attr("id", "base_normal_curve")
+			.attr("id", "area")
 		
 		update(x, y);
 		
@@ -216,9 +217,7 @@
 					.transition()
 					.attr("d", line);
 					
-				svg.append("path")
-					.datum(data)
-					.attr("class", "area")
+				d3.select("area")
 					.attr("d", area);
 			}
 		}
