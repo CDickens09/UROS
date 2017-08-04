@@ -101,7 +101,8 @@
 			.scale(y)
 			.orient("left");
 			
-		var svg = d3.select("#user").append("svg")
+		var svg = d3.select("#user")
+			.append("svg")
 			.attr("width", width + margin.left + margin.right)
 			.attr("height", height + margin.top + margin.bottom)
 			.append("g")
@@ -131,6 +132,7 @@
 			.orient("left");
 		
 		var svg_fixed = d3.select("#normal")
+			.append("svg")
 			.attr("width", width + margin.left + margin.right)
 			.attr("height", height + margin.top + margin.bottom)
 			.append("g")
