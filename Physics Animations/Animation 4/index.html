@@ -154,6 +154,15 @@
 		data = get_data(0, 1, x)
 		update_x_axisf(x)
 		update_y_axisf(data, y)
+		var line = d3.svg.line()
+		.x(function(d) 
+		{
+			return x(d.q);
+		})
+		.y(function(d) 
+		{
+			return y(d.p);
+		});	
 		d3.select("#fixed_normal_curve")
 			.datum(data)
 			.transition()
