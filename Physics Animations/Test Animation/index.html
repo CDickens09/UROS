@@ -72,9 +72,18 @@
 	
 	<p>
 		To add a wave enter the desired values for amplitude, frequency and phase shift then press the add wave button.
+	</p>
+	
+	<p>
 		You can remove the last created wave or all waves by pressing the respective buttons.
+	</p>
+	
+	<p>
 		The bottom graph shows a merge of all the current waves in the top graph.
-		You may add up to 10 waves to the top graph.
+	</p>
+	
+	<p>
+		You may add up to 8 waves to the top graph.
 	</p>
 	
 	<script>
@@ -121,7 +130,7 @@
 
 		function addwave()
 		{
-			if(data_history.length < 10)
+			if(data_history.length < 8)
 			{
 				var new_data = []
 				console.log(offsety)
