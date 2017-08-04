@@ -114,27 +114,34 @@
 
 		function addwave()
 		{
-			var new_data = []
-			console.log(offsety)
-			var amplitude = document.getElementById('amplitudebox').value;
-			var frequency = document.getElementById('frequencybox').value / (window.innerWidth) * Math.PI * 2;
-			var phase = document.getElementById('phasebox').value / 360 * Math.PI * 2;
-
-			for (var i = 0; i < width; i++) 
+			if(data_history.length < 10)
 			{
-				new_data.push({x:i + origin.x,y:  Math.sin((frequency * (i - 1)) + phase) * amplitude + origin.y + 2*offsety});
-				data[i] = data[i] + Math.sin((frequency * i) + phase) * amplitude + origin.y
+				var new_data = []
+				console.log(offsety)
+				var amplitude = document.getElementById('amplitudebox').value;
+				var frequency = document.getElementById('frequencybox').value / (window.innerWidth) * Math.PI * 2;
+				var phase = document.getElementById('phasebox').value / 360 * Math.PI * 2;
+
+				for (var i = 0; i < width; i++) 
+				{
+					new_data.push({x:i + origin.x,y:  Math.sin((frequency * (i - 1)) + phase) * amplitude + origin.y + 2*offsety});
+					data[i] = data[i] + Math.sin((frequency * i) + phase) * amplitude + origin.y
+				}
+				
+				data_history.push(data.concat());
+				new_data_history.push(new_data.concat());
+				svg.append("path")
+					.attr("id","data")
+					.attr("d", valueline(new_data));
+				offsety += +amplitude;
+				offset_history.push(offsety)
+				totalwave(data) ;
+				numwaves++ ;
 			}
-			
-			data_history.push(data.concat());
-			new_data_history.push(new_data.concat());
-			svg.append("path")
-				.attr("id","data")
-				.attr("d", valueline(new_data));
-			offsety += +amplitude;
-			offset_history.push(offsety)
-			totalwave(data) ;
-			numwaves++ ;
+			else
+			{
+				alert("Maximum number of waves reached");
+			}
 		}
 
 		function removelast() 
