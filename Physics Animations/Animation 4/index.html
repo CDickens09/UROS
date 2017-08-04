@@ -107,14 +107,18 @@
 			.append("g")
 			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-		svg.append("g")
+		svg_fixed.append("g")
 			.attr("class", "x axis")
 			.attr("transform", "translate(0," + height + ")")
 			.call(xAxis);
 
-		svg.append("g")
+		svg_fixed.append("g")
 			.attr("class", "y axis")
 			.call(yAxis);
+
+		svg_fixed.append("path")
+			.attr("class", "line")
+			.attr("id", "base_normal_curve")
 			
 		var svg = d3.select("#user").append("svg")
 			.attr("width", width + margin.left + margin.right)
