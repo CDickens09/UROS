@@ -58,15 +58,15 @@
 	});
 	</script>
 	
+	<p id="gaussian_normal">
+	</p>
+	
 	<p class="input">
 		<label class="input" for="meanbox">Mean: </label>
 		<input class="input inputbox" type="text" id="meanbox" size="3" value="0"/>
 		<label class="input" for="stdevbox">Standard deviation:</label>
 		<input class="input inputbox" type="text" id="stdevbox" size="3" value="1"/>
 		<input class="input inputbox" type="checkbox" id="axisscalecheck" value="lock" checked>Scale axes</input>
-	</p>
-	
-	<p id="gaussian_normal">
 	</p>
 	
 	<p id="gaussian_user">
@@ -80,8 +80,8 @@
 			bottom: 30,
 			left: 50
 		},
-		width = innerWidth-70,
-		height = innerHeight-179;
+		width = innerWidth - 70,
+		height = innerHeight / 2 - 179;
 		base_mean = 0;
 		base_sigma = 1;
 
