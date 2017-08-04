@@ -132,7 +132,7 @@
 
 		function addwave()
 		{
-			if(totamplitude * 2 < height)
+			if(totamplitude * 2 < height && amplitude * 2 < height)
 			{
 				var new_data = []
 				console.log(offsety)
@@ -161,7 +161,7 @@
 			}
 			else
 			{
-				alert("Maximum number of waves reached");
+				alert("Maximum number of waves reached, please use smaller amplitude");
 			}
 		}
 
@@ -199,6 +199,7 @@
 			d3.selectAll("#data").remove()
 			numwaves = 0
 			offsety = 0
+			totamplitude = 0
 			
 			for (var i = 0; i < width; i++) 
 			{
