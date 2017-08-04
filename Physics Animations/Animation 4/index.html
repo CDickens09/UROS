@@ -66,6 +66,12 @@
 		<input class="input inputbox" type="checkbox" id="axisscalecheck" value="lock" checked>Scale axes</input>
 	</p>
 	
+	<p id="gaussian_normal">
+	</p>
+	
+	<p id="gaussian_user">
+	</p>
+	
 	<script>
 		var margin = 
 		{
@@ -95,7 +101,7 @@
 			.scale(y)
 			.orient("left");
 			
-		var svg = d3.select("body").append("svg")
+		var svg = d3.select("#gaussian_normal").append("svg")
 			.attr("width", width + margin.left + margin.right)
 			.attr("height", height + margin.top + margin.bottom)
 			.append("g")
