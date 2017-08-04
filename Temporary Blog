@@ -126,3 +126,5 @@
 03/08/2017 - Added button to get to animation 5
 03/08/2017 - Started work on merged waves with aid of d3_reusable
 03/08/2017 - Incorporated phase fix from Matt
+04/08/2017 - Adjusted height of animation so it fit the page better
+04/08/2017 - Added max wave cap to stop waves going off the screen
