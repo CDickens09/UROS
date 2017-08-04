@@ -100,7 +100,12 @@
 		var yAxis = d3.svg.axis()
 			.scale(y)
 			.orient("left");
-			
+		
+		var area = d3.svg.area()
+		.x(function(d) { return x(d.date); })
+		.y0(height)
+		.y1(function(d) { return y(d.close); });
+		
 		var svg = d3.select("#user")
 			.append("svg")
 			.attr("width", width + margin.left + margin.right)
@@ -120,6 +125,11 @@
 		svg.append("path")
 			.attr("class", "line")
 			.attr("id", "base_normal_curve")
+		
+		svg.append("path")
+        .datum(data)
+        .attr("class", "area")
+        .attr("d", area);
 		
 		update(x, y);
 		
