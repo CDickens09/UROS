@@ -118,7 +118,17 @@
 			.attr("class", "line")
 			.attr("id", "base_normal_curve")
 
-		data(x, y);
+		update(x, y);
+
+		d3.selectAll(".inputbox").on("input", function()
+		{
+			update(x, y)
+		});
+
+		d3.select("#axislockcheck").on("change", function()
+		{
+			update(x, y)
+		});
 
 		function data(x, y)
 		{
