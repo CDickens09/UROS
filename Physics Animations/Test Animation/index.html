@@ -130,11 +130,11 @@
 
 		function addwave()
 		{
-			if(data_history.length < 10)
+			if(data_history.length < 8)
 			{
 				var new_data = []
 				console.log(offsety)
-				var amplitude = height / document.getElementById('amplitudebox').value;
+				var amplitude = document.getElementById('amplitudebox').value;
 				var frequency = document.getElementById('frequencybox').value / (window.innerWidth) * Math.PI * 2;
 				var phase = document.getElementById('phasebox').value / 360 * Math.PI * 2;
 
