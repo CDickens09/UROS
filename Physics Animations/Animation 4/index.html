@@ -120,6 +120,8 @@
 			.attr("class", "line")
 			.attr("id", "base_normal_curve")
 		
+		update(x, y);
+		
 		var xAxisf = d3.svg.axis()
 			.scale(x)
 			.orient("bottom");
@@ -147,7 +149,9 @@
 			.attr("class", "line")
 			.attr("id", "base_normal_curve")
 			
-		update(x, y);
+		data = get_data(0, 1, x)
+		update_x_axisf(x)
+		update_y_axisf(data, y)
 
 		d3.selectAll(".inputbox").on("input", function()
 		{
@@ -199,7 +203,13 @@
 			x.domain([m - (z_limit * s), m + (z_limit * s)]);
 			d3.select(".x").transition().call(xAxis);		
 		}
-
+		
+		function update_x_axisf(x)
+		{
+			x.domain([0 - (z_limit * 1), 0 + (z_limit * 1)]);
+			d3.select(".x").transition().call(xAxisf);		
+		}
+		
 		function update_y_axis(data, m, s, y)
 		{
 			y.domain(d3.extent(data, function(d) 
@@ -208,7 +218,16 @@
 			}));
 			d3.select(".y").transition().call(yAxis);
 		}
-
+		
+		function update_y_axisf(data, y)
+		{
+			y.domain(d3.extent(data, function(d) 
+			{
+				return d.p;
+			}));
+			d3.select(".y").transition().call(yAxisf);
+		}
+		
 		function get_data(mean, sigma, x)
 		{
 			data = [];
