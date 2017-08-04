@@ -120,6 +120,14 @@
 			.attr("class", "line")
 			.attr("id", "base_normal_curve")
 		
+		var xAxisf = d3.svg_fixed.axis()
+			.scale(x)
+			.orient("bottom");
+
+		var yAxisf = d3.svg_fixed.axis()
+			.scale(y)
+			.orient("left");
+		
 		var svg_fixed = d3.select("#normal")
 			.attr("width", width + margin.left + margin.right)
 			.attr("height", height + margin.top + margin.bottom)
@@ -129,11 +137,11 @@
 		svg_fixed.append("g")
 			.attr("class", "x axis")
 			.attr("transform", "translate(0," + height + ")")
-			.call(xAxis);
+			.call(xAxisf);
 
 		svg_fixed.append("g")
 			.attr("class", "y axis")
-			.call(yAxis);
+			.call(yAxisf);
 
 		svg_fixed.append("path")
 			.attr("class", "line")
