@@ -12,6 +12,11 @@
 		<script src="//d3js.org/d3.v3.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<style>
+			.area 
+			{
+				fill: lightsteelblue;
+				stroke-width: 0;
+			}
 			.axis path, .axis line 
 			{
 				fill: none;
@@ -120,7 +125,6 @@
 		svg.append("path")
 			.attr("class", "line")
 			.attr("id", "base_normal_curve")
-			.attr("id", "area")
 		
 		update(x, y);
 		
@@ -217,7 +221,9 @@
 					.transition()
 					.attr("d", line);
 					
-				d3.select("area")
+				svg.append("path")
+					.datum(data)
+					.attr("class", "area")
 					.attr("d", area);
 			}
 		}
