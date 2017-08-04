@@ -142,7 +142,7 @@
 					update_x_axis(m, s, x);		
 				}
 
-				data = fixed_data(m, s, x);
+				data = get_data(m, s, x);
 
 				if(d3.select("#axisscalecheck").property("checked"))
 				{
@@ -166,7 +166,7 @@
 			}
 		}
 
-		function fixed_data(x)
+		function get_data(x)
 		{
 			data = [];
 
@@ -183,6 +183,15 @@
 			return data 	
 		}
 		
+		function gaussian_pdf(x, mean, sigma) 
+		{
+			var gaussianConstant = 1 / Math.sqrt(2 * Math.PI),
+			x = (x - mean) / sigma;
+			return gaussianConstant * Math.exp(-.5 * x * x) / sigma;
+		};
+	</script>
+	
+	<script>
 		var svg = d3.select("#gaussian_user").append("svg")
 			.attr("width", width + margin.left + margin.right)
 			.attr("height", height + margin.top + margin.bottom)
