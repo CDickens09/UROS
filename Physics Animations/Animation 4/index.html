@@ -212,9 +212,9 @@
 					});	
 
 				var area = d3.svg.area()
-					.x(function(d) { return x(d.date); })
+					.x(function(get_data) { return x(q); })
 					.y0(height)
-					.y1(function(d) { return y(d.close); });
+					.y1(function(get_data) { return y(p); });
 					
 				d3.select("#base_normal_curve")
 					.datum(data)
