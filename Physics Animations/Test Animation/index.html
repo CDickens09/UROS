@@ -132,12 +132,12 @@
 
 		function addwave()
 		{
+			var amplitude = document.getElementById('amplitudebox').value;
+			var frequency = document.getElementById('frequencybox').value / (window.innerWidth) * Math.PI * 2;
+			var phase = document.getElementById('phasebox').value / 360 * Math.PI * 2;
 			if(totamplitude * 2 < height && amplitude * 2 < height)
 			{
 				var new_data = []
-				var amplitude = document.getElementById('amplitudebox').value;
-				var frequency = document.getElementById('frequencybox').value / (window.innerWidth) * Math.PI * 2;
-				var phase = document.getElementById('phasebox').value / 360 * Math.PI * 2;
 
 				for (var i = 0; i < width; i++) 
 				{
