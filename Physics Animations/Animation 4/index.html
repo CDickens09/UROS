@@ -149,11 +149,15 @@
 
 		svg_fixed.append("path")
 			.attr("class", "line")
-			.attr("id", "base_normal_curve")
+			.attr("id", "fixed_normal_curve")
 			
 		data = get_data(0, 1, x)
 		update_x_axisf(x)
 		update_y_axisf(data, y)
+		d3.select("#fixed_normal_curve")
+			.datum(data)
+			.transition()
+			.attr("d", line);
 
 		d3.selectAll(".inputbox").on("input", function()
 		{
