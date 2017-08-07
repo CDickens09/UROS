@@ -132,7 +132,11 @@
 			
 		svg.append("path")
 			.attr("class", "line")
-			.attr("id", "percent_normal_curve")
+			.attr("id", "percentl_normal_curve")
+			
+		svg.append("path")
+			.attr("class", "line")
+			.attr("id", "percentr_normal_curve")
 		
 		var xAxisf = d3.svg.axis()
 			.scale(x)
@@ -164,7 +168,11 @@
 			
 		svg_fixed.append("path")
 			.attr("class", "line")
-			.attr("id", "percentfixed_normal_curve")
+			.attr("id", "percentfixedl_normal_curve")
+			
+		svg_fixed.append("path")
+			.attr("class", "line")
+			.attr("id", "percentfixedr_normal_curve")
 		
 		update(x, y);
 		updateshade();
@@ -258,7 +266,7 @@
 				data.pop()
 			}
 			
-			d3.select("#percent_normal_curve")
+			d3.select("#percentl_normal_curve")
 				.datum(data)
 				.transition()
 				.attr("d", line)
@@ -271,7 +279,7 @@
 				data.shift()
 			}
 			
-			d3.select("#percent_normal_curve")
+			d3.select("#percentr_normal_curve")
 				.datum(data)
 				.transition()
 				.attr("d", line)
@@ -284,7 +292,7 @@
 				data.pop()
 			}
 			
-			d3.select("#percentfixed_normal_curve")
+			d3.select("#percentfixedl_normal_curve")
 				.datum(data)
 				.transition()
 				.attr("d", line)
@@ -297,7 +305,7 @@
 				data.shift()
 			}
 			
-			d3.select("#percentfixed_normal_curve")
+			d3.select("#percentfixedr_normal_curve")
 				.datum(data)
 				.transition()
 				.attr("d", line)
