@@ -221,7 +221,7 @@
 				
 				percent = Number(d3.select("#percentbox").property("value"));
 				
-				data = data.splice(0,1)
+				data.pop()
 			
 				d3.select("#percent_normal_curve")
 					.datum(data)
