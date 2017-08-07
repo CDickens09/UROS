@@ -287,7 +287,14 @@
 				.attr("d", line)
 				.style("fill", "red");
 			
-			data = get_data(0, 1, x);
+			if(d3.select("#axisscalecheck").property("checked"))
+			{
+				data = get_data(m, s, x);
+			}
+			else
+			{
+				data = get_data(0, 1, x);
+			}
 			
 			while(data[data.length-1].q > ptz(lpercent / 100))
 			{
@@ -302,7 +309,14 @@
 				.attr("d", line)
 				.style("fill", "red");
 				
-			data = get_data(0, 1, x);
+			if(d3.select("#axisscalecheck").property("checked"))
+			{
+				data = get_data(m, s, x);
+			}
+			else
+			{
+				data = get_data(0, 1, x);
+			}
 			
 			while(data[0].q < ptz(1 - (rpercent / 100)))
 			{
