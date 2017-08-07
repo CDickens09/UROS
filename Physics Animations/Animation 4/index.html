@@ -68,6 +68,8 @@
 		<input class="input inputbox" type="text" id="meanbox" size="3" value="0"/>
 		<label class="input" for="stdevbox">Standard deviation:</label>
 		<input class="input inputbox" type="text" id="stdevbox" size="3" value="1"/>
+		<label class="input" for="percentbox">Shaded percentage:</label>
+		<input class="input inputbox" type="text" id="percentbox" size="3" value="10"/>
 		<input class="input inputbox" type="checkbox" id="axisscalecheck" value="lock" checked>Scale axes</input>
 	</p>
 	
@@ -125,6 +127,10 @@
 		svg.append("path")
 			.attr("class", "line")
 			.attr("id", "base_normal_curve")
+			
+		svg.append("path")
+			.attr("class", "line")
+			.attr("id", "percent_normal_curve")
 		
 		update(x, y);
 		
@@ -212,6 +218,18 @@
 					});	
 
 				d3.select("#base_normal_curve")
+					.datum(data)
+					.transition()
+					.attr("d", line);
+				
+				percent = Number(d3.select("#percentbox").property("value"));
+				
+				for(var i = 0; i < width * (1 - percent); i++)
+				{
+				data = data.splice(data.length - 1,1)
+				}
+			
+				d3.select("#percent_normal_curve")
 					.datum(data)
 					.transition()
 					.attr("d", line);
