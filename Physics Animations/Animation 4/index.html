@@ -289,16 +289,6 @@
 			
 			data = get_data(0, 1, initx);
 			
-			var line = d3.svg.line()
-			.x(function(d) 
-			{
-				return x(d.q);
-			})
-			.y(function(d) 
-			{
-				return y(d.p);
-			});	
-			
 			for(var i = 0; i < width * (1 - (lpercent / 100)); i++)
 			{
 				data.pop()
