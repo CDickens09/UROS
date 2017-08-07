@@ -378,7 +378,7 @@
 			return gaussianConstant * Math.exp(-.5 * x * x) / sigma;
 		};
 		
-		function ptz(z) 
+		function ztp(z) 
 		{
 			var y, x, w;
 
@@ -418,7 +418,7 @@
 			return z > 0.0 ? ((x + 1.0) * 0.5) : ((1.0 - x) * 0.5);
 		}
 
-		function ztp(p) 
+		function ptz(p) 
 		{
 			var Z_EPSILON = 0.000001;     
 			var minz = -Z_MAX;
@@ -430,7 +430,7 @@
 
 			while ((maxz - minz) > Z_EPSILON) 
 			{
-				pval = ptz(zval);
+				pval = ztp(zval);
 				if (pval > p) 
 				{
 					maxz = zval;
