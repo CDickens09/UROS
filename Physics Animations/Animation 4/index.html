@@ -279,7 +279,7 @@
 				data.shift()
 			}
 			
-			data[data.length-1].p = 0.0;
+			data[0].p = 0.0;
 			
 			d3.select("#percentr_normal_curve")
 				.datum(data)
@@ -309,7 +309,7 @@
 				data.shift()
 			}
 			
-			data[data.length-1].p = 0.0;
+			data[0].p = 0.0;
 			
 			d3.select("#percentfixedr_normal_curve")
 				.datum(data)
