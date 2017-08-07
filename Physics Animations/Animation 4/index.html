@@ -218,6 +218,10 @@
 					});	
 
 
+				d3.select("#base_normal_curve")
+					.datum(data)
+					.transition()
+					.attr("d", line);
 				
 				percent = Number(d3.select("#percentbox").property("value"));
 				
@@ -229,7 +233,8 @@
 				d3.select("#percent_normal_curve")
 					.datum(data)
 					.transition()
-					.attr("d", line);
+					.attr("d", line)
+					.style("stroke", "red");
 			}
 		}
 
