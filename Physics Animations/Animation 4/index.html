@@ -264,7 +264,7 @@
 			rpercent = Number(d3.select("#rpercentbox").property("value"));
 			console.log(data)
 			
-			for(var i = 0; i < width * (1 - (lpercent / 100)); i++)
+			while(data[data.length-1].q > ptz(lpercent))
 			{
 				data.pop()
 			}
