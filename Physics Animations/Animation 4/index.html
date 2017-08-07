@@ -172,10 +172,8 @@
 			.attr("class", "line")
 			.attr("id", "percentfixedr_normal_curve")
 		
-
-		updateshade();
-		
 		var fdata = get_data(0, 1, x)
+		updateshade();
 		update_x_axisf(x)
 		update_y_axisf(fdata, y)
 		var line = d3.svg.line()
