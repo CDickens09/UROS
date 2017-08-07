@@ -12,11 +12,6 @@
 		<script src="//d3js.org/d3.v3.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<style>
-			.area 
-			{
-				fill: lightsteelblue;
-				stroke-width: 0;
-			}
 			.axis path, .axis line 
 			{
 				fill: none;
@@ -269,11 +264,13 @@
 				data.pop()
 			}
 			
+			data[data.length-1].q = 0.0;
+			
 			d3.select("#percentl_normal_curve")
 				.datum(data)
 				.transition()
 				.attr("d", line)
-				.style("stroke", "red");
+				.style("fill", "red");
 			
 			data = get_data(m, s, x);
 			
@@ -282,11 +279,13 @@
 				data.shift()
 			}
 			
+			data[data.length-1].q = 0.0;
+			
 			d3.select("#percentr_normal_curve")
 				.datum(data)
 				.transition()
 				.attr("d", line)
-				.style("stroke", "red");
+				.style("fill", "red");
 			
 			data = get_data(0, 1, x);
 			
@@ -295,11 +294,13 @@
 				data.pop()
 			}
 			
+			data[data.length-1].q = 0.0;
+			
 			d3.select("#percentfixedl_normal_curve")
 				.datum(data)
 				.transition()
 				.attr("d", line)
-				.style("stroke", "red");
+				.style("fill", "red");
 				
 			data = get_data(0, 1, x);
 			
@@ -308,11 +309,13 @@
 				data.shift()
 			}
 			
+			data[data.length-1].q = 0.0;
+			
 			d3.select("#percentfixedr_normal_curve")
 				.datum(data)
 				.transition()
 				.attr("d", line)
-				.style("stroke", "red");
+				.style("fill", "red");
 		}
 
 		function update_x_axis(m, s, x)
