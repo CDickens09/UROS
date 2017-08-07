@@ -217,10 +217,7 @@
 						return y(d.p);
 					});	
 
-				d3.select("#base_normal_curve")
-					.datum(data)
-					.transition()
-					.attr("d", line);
+
 				
 				percent = Number(d3.select("#percentbox").property("value"));
 				
