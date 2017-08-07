@@ -68,8 +68,10 @@
 		<input class="input inputbox" type="text" id="meanbox" size="3" value="0"/>
 		<label class="input" for="stdevbox">Standard deviation:</label>
 		<input class="input inputbox" type="text" id="stdevbox" size="3" value="1"/>
-		<label class="input" for="percentbox">Shaded percentage:</label>
-		<input class="input inputbox" type="text" id="percentbox" size="3" value="10"/>
+		<label class="input" for="lpercentbox">Left shaded percentage:</label>
+		<input class="input inputbox" type="text" id="lpercentbox" size="3" value="10"/>
+		<label class="input" for="rpercentbox">Right shaded percentage:</label>
+		<input class="input inputbox" type="text" id="rpercentbox" size="3" value="10"/>
 		<input class="input inputbox" type="checkbox" id="axisscalecheck" value="lock" checked>Scale axes</input>
 	</p>
 	
@@ -248,9 +250,10 @@
 				return y(d.p);
 			});	
 			
-			percent = Number(d3.select("#percentbox").property("value"));
+			lpercent = Number(d3.select("#lpercentbox").property("value"));
+			rpercent = Number(d3.select("#rpercentbox").property("value"));
 				
-			for(var i = 0; i < width * (1 - (percent / 100)); i++)
+			for(var i = 0; i < width * (1 - (lpercent / 100)); i++)
 			{
 				data.pop()
 			}
@@ -261,11 +264,37 @@
 				.attr("d", line)
 				.style("stroke", "red");
 			
+			data = get_data(m, s, x);
+			
+			for(var i = 0; i < width * (1 - (rpercent / 100)); i++)
+			{
+				data.shift()
+			}
+			
+			d3.select("#percent_normal_curve")
+				.datum(data)
+				.transition()
+				.attr("d", line)
+				.style("stroke", "red");
+			
 			data = get_data(0, 1, x);
 			
-			for(var i = 0; i < width * (1 - (percent / 100)); i++)
+			for(var i = 0; i < width * (1 - (lpercent / 100)); i++)
 			{
 				data.pop()
+			}
+			
+			d3.select("#percentfixed_normal_curve")
+				.datum(data)
+				.transition()
+				.attr("d", line)
+				.style("stroke", "red");
+				
+			data = get_data(0, 1, x);
+			
+			for(var i = 0; i < width * (1 - (rpercent / 100)); i++)
+			{
+				data.shift()
 			}
 			
 			d3.select("#percentfixed_normal_curve")
