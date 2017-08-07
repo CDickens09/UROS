@@ -138,6 +138,8 @@
 			.attr("class", "line")
 			.attr("id", "percentr_normal_curve")
 		
+		update(x, y);
+		
 		var xAxisf = d3.svg.axis()
 			.scale(x)
 			.orient("bottom");
@@ -174,7 +176,6 @@
 			.attr("class", "line")
 			.attr("id", "percentfixedr_normal_curve")
 		
-		update(x, y);
 		updateshade();
 		
 		data = get_data(0, 1, x)
