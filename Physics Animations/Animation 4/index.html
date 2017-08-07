@@ -290,6 +290,8 @@
 				.attr("d", line)
 				.style("fill", "red");
 			
+			initx.domain([0 - (z_limit * 1), 0 + (z_limit * 1)]);
+			
 			data = get_data(0, 1, initx);
 						
 			console.log(data);
