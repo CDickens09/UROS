@@ -179,6 +179,7 @@
 		updateshade();
 		
 		data = get_data(0, 1, x)
+		var initx = x;
 		update_x_axisf(x)
 		update_y_axisf(data, y)
 		var line = d3.svg.line()
@@ -286,7 +287,7 @@
 				.attr("d", line)
 				.style("stroke", "red");
 			
-			data = get_data(0, 1, x);
+			data = get_data(0, 1, initx);
 			
 			var line = d3.svg.line()
 			.x(function(d) 
@@ -309,7 +310,7 @@
 				.attr("d", line)
 				.style("stroke", "red");
 				
-			data = get_data(0, 1, x);
+			data = get_data(0, 1, initx);
 			
 			for(var i = 0; i < width * (1 - (rpercent / 100)); i++)
 			{
