@@ -132,3 +132,4 @@
 04/08/2017 - Made cap relative to screen size so that waves dont go outside of graph on any device
 04/08/2017 - Made second distribution graph for standard 0,1 graph
 07/08/2017 - Added a red line to show shaded area from the left (User set percentage)
+07/08/2017 - Added shading from right or left as an option
