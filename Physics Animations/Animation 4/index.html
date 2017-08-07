@@ -264,6 +264,7 @@
 				data.pop()
 			}
 			
+			data[0].p = 0.0;
 			data[data.length-1].p = 0.0;
 			
 			d3.select("#percentl_normal_curve")
@@ -280,6 +281,7 @@
 			}
 			
 			data[0].p = 0.0;
+			data[data.length-1].p = 0.0;
 			
 			d3.select("#percentr_normal_curve")
 				.datum(data)
@@ -304,6 +306,7 @@
 				}
 			}
 			
+			data[0].p = 0.0;
 			data[data.length-1].p = 0.0;
 			
 			d3.select("#percentfixedl_normal_curve")
@@ -329,9 +332,8 @@
 				}
 			}
 			
-
-			
 			data[0].p = 0.0;
+			data[data.length-1].p = 0.0;
 			
 			d3.select("#percentfixedr_normal_curve")
 				.datum(data)
