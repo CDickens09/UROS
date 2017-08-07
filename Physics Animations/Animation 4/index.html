@@ -285,32 +285,28 @@
 				.attr("d", line)
 				.style("fill", "red");
 			
-			data = fdata;
-			
-			while(data[data.length-1].q > ptz(lpercent / 100))
+			while(fdata[fdata.length-1].q > ptz(lpercent / 100))
 			{
-				data.pop()
+				fdata.pop()
 			}
 			
-			data[data.length-1].p = 0.0;
+			fdata[data.length-1].p = 0.0;
 			
 			d3.select("#percentfixedl_normal_curve")
-				.datum(data)
+				.datum(fdata)
 				.transition()
 				.attr("d", line)
 				.style("fill", "red");
-				
-			data = fdata;
 			
-			while(data[0].q < ptz(1 - (rpercent / 100)))
+			while(fdata[0].q < ptz(1 - (rpercent / 100)))
 			{
-				data.shift()
+				fdata.shift()
 			}
 			
-			data[0].p = 0.0;
+			fdata[0].p = 0.0;
 			
 			d3.select("#percentfixedr_normal_curve")
-				.datum(data)
+				.datum(fdata)
 				.transition()
 				.attr("d", line)
 				.style("fill", "red");
