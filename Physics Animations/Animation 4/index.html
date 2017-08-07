@@ -172,10 +172,12 @@
 			.attr("class", "line")
 			.attr("id", "percentfixedr_normal_curve")
 		
-		var fdata = get_data(0, 1, x)
+
 		updateshade();
+		
+		data = get_data(0, 1, x)
 		update_x_axisf(x)
-		update_y_axisf(fdata, y)
+		update_y_axisf(data, y)
 		var line = d3.svg.line()
 		.x(function(d) 
 		{
@@ -186,7 +188,7 @@
 			return y(d.p);
 		});	
 		d3.select("#fixed_normal_curve")
-			.datum(fdata)
+			.datum(data)
 			.transition()
 			.attr("d", line);
 
@@ -285,28 +287,32 @@
 				.attr("d", line)
 				.style("fill", "red");
 			
-			while(fdata[fdata.length-1].q > ptz(lpercent / 100))
+			data = get_data(0, 1, x);
+			
+			while(data[data.length-1].q > ptz(lpercent / 100))
 			{
-				fdata.pop()
+				data.pop()
 			}
 			
-			fdata[data.length-1].p = 0.0;
+			data[data.length-1].p = 0.0;
 			
 			d3.select("#percentfixedl_normal_curve")
-				.datum(fdata)
+				.datum(data)
 				.transition()
 				.attr("d", line)
 				.style("fill", "red");
+				
+			data = get_data(0, 1, x);
 			
-			while(fdata[0].q < ptz(1 - (rpercent / 100)))
+			while(data[0].q < ptz(1 - (rpercent / 100)))
 			{
-				fdata.shift()
+				data.shift()
 			}
 			
-			fdata[0].p = 0.0;
+			data[0].p = 0.0;
 			
 			d3.select("#percentfixedr_normal_curve")
-				.datum(fdata)
+				.datum(data)
 				.transition()
 				.attr("d", line)
 				.style("fill", "red");
