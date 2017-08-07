@@ -291,7 +291,7 @@
 			
 			data = get_data(0, 1, x);
 			
-			for(var i = 0; i < width * (1 - (lpercent / 100)); i++)
+			while(data[data.length-1].q < ptz(lpercent/100))
 			{
 				data.pop()
 			}
@@ -304,7 +304,7 @@
 				
 			data = get_data(0, 1, x);
 			
-			for(var i = 0; i < width * (1 - (rpercent / 100)); i++)
+			while(data[0].q < ptz(rpercent/100))
 			{
 				data.shift()
 			}
