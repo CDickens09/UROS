@@ -95,6 +95,9 @@
 		var x = d3.scale.linear()
 			.range([0, width]);
 
+		var initx = d3.scale.linear()
+			.range([0, width]);
+			
 		var y = d3.scale.linear()
 			.range([height, 0]);
 
@@ -176,7 +179,6 @@
 		updateshade();
 		
 		data = get_data(0, 1, x)
-		var initx = x;
 		update_x_axisf(x)
 		update_y_axisf(data, y)
 		var line = d3.svg.line()
