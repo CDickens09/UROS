@@ -162,6 +162,10 @@
 			.attr("class", "line")
 			.attr("id", "fixed_normal_curve")
 			
+		svg_fixed.append("path")
+			.attr("class", "line")
+			.attr("id", "percentfixed_normal_curve")
+			
 		data = get_data(0, 1, x)
 		update_x_axisf(x)
 		update_y_axisf(data, y)
@@ -182,11 +186,13 @@
 		d3.selectAll(".inputbox").on("input", function()
 		{
 			update(x, y)
+			updateshade()
 		});
 
 		d3.select("#axislockcheck").on("change", function()
 		{
 			update(x, y)
+			updateshade()
 		});
 
 		function update(x, y)
@@ -217,25 +223,55 @@
 						return y(d.p);
 					});	
 
-
 				d3.select("#base_normal_curve")
 					.datum(data)
 					.transition()
 					.attr("d", line);
-				
-				percent = Number(d3.select("#percentbox").property("value"));
-				
-				for(var i = 0; i < width * (1 - (percent / 100)); i++)
-				{
-				data.pop()
-				}
-			
-				d3.select("#percent_normal_curve")
-					.datum(data)
-					.transition()
-					.attr("d", line)
-					.style("stroke", "red");
 			}
+		}
+		
+		function updateshade()
+		{
+			m = Number(d3.select("#meanbox").property("value"));
+			s = Number(d3.select("#stdevbox").property("value"));
+			
+			data = get_data(m, s, x);
+			
+			var line = d3.svg.line()
+			.x(function(d) 
+			{
+				return x(d.q);
+			})
+			.y(function(d) 
+			{
+				return y(d.p);
+			});	
+			
+			percent = Number(d3.select("#percentbox").property("value"));
+				
+			for(var i = 0; i < width * (1 - (percent / 100)); i++)
+			{
+				data.pop()
+			}
+			
+			d3.select("#percent_normal_curve")
+				.datum(data)
+				.transition()
+				.attr("d", line)
+				.style("stroke", "red");
+			
+			data = get_data(0, 1, x);
+			
+			for(var i = 0; i < width * (1 - (percent / 100)); i++)
+			{
+				data.pop()
+			}
+			
+			d3.select("#percentfixed_normal_curve")
+				.datum(data)
+				.transition()
+				.attr("d", line)
+				.style("stroke", "red");
 		}
 
 		function update_x_axis(m, s, x)
