@@ -133,3 +133,5 @@
 04/08/2017 - Made second distribution graph for standard 0,1 graph
 07/08/2017 - Added a red line to show shaded area from the left (User set percentage)
 07/08/2017 - Added shading from right or left as an option
+07/08/2017 - Fixed formula for shading
+07/08/2017 - Added fill instead of just line
