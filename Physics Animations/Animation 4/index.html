@@ -261,9 +261,7 @@
 			
 			lpercent = Number(d3.select("#lpercentbox").property("value"));
 			rpercent = Number(d3.select("#rpercentbox").property("value"));
-			
-			console.log(data);
-			
+
 			while(data[data.length-1].q > (ptz(lpercent / 100) * s + m))
 			{
 				data.pop()
@@ -278,8 +276,6 @@
 				.style("fill", "red");
 			
 			data = get_data(m, s, x);
-						
-			console.log(data);
 			
 			while(data[0].q < (ptz(1 - (rpercent / 100)) * s + m))
 			{
@@ -297,6 +293,8 @@
 			data = get_data(0, 1, initx);
 						
 			console.log(data);
+			console.log(x);
+			console.log(initx);
 			
 			while(data[data.length-1].q > ptz(lpercent / 100))
 			{
@@ -312,9 +310,7 @@
 				.style("fill", "red");
 				
 			data = get_data(0, 1, initx);
-						
-			console.log(data);
-			
+		
 			while(data[0].q < ptz(1 - (rpercent / 100)))
 			{
 				data.shift()
