@@ -95,9 +95,6 @@
 		var x = d3.scale.linear()
 			.range([0, width]);
 
-		var initx = d3.scale.linear()
-			.range([0, width]);
-			
 		var y = d3.scale.linear()
 			.range([height, 0]);
 
@@ -261,7 +258,7 @@
 			
 			lpercent = Number(d3.select("#lpercentbox").property("value"));
 			rpercent = Number(d3.select("#rpercentbox").property("value"));
-
+			
 			while(data[data.length-1].q > (ptz(lpercent / 100) * s + m))
 			{
 				data.pop()
@@ -290,13 +287,7 @@
 				.attr("d", line)
 				.style("fill", "red");
 			
-			initx.domain([0 - (z_limit * 1), 0 + (z_limit * 1)]);
-			
 			data = get_data(0, 1, initx);
-						
-			console.log(data);
-			console.log(x);
-			console.log(initx);
 			
 			while(data[data.length-1].q > ptz(lpercent / 100))
 			{
@@ -312,7 +303,7 @@
 				.style("fill", "red");
 				
 			data = get_data(0, 1, initx);
-		
+			
 			while(data[0].q < ptz(1 - (rpercent / 100)))
 			{
 				data.shift()
