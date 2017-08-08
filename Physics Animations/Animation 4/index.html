@@ -243,105 +243,162 @@
 		{
 			m = Number(d3.select("#meanbox").property("value"));
 			s = Number(d3.select("#stdevbox").property("value"));
-			
-			data = get_data(m, s, x);
-			
-			var line = d3.svg.line()
-			.x(function(d) 
-			{
-				return x(d.q);
-			})
-			.y(function(d) 
-			{
-				return y(d.p);
-			});	
-			
 			lpercent = Number(d3.select("#lpercentbox").property("value"));
 			rpercent = Number(d3.select("#rpercentbox").property("value"));
 			
-			while(data[data.length-1].q > (ptz(lpercent / 100) * s + m))
-			{
-				data.pop()
-			}
-			
-			data[0].p = 0.0;
-			data[data.length-1].p = 0.0;
-			
-			d3.select("#percentl_normal_curve")
-				.datum(data)
-				.transition()
-				.attr("d", line)
-				.style("fill", "red");
-			
-			data = get_data(m, s, x);
-			
-			while(data[0].q < (ptz(1 - (rpercent / 100)) * s + m))
-			{
-				data.shift()
-			}
-			
-			data[0].p = 0.0;
-			data[data.length-1].p = 0.0;
-			
-			d3.select("#percentr_normal_curve")
-				.datum(data)
-				.transition()
-				.attr("d", line)
-				.style("fill", "red");
-			
-			if(d3.select("#axisscalecheck").property("checked"))
+			if(lpercent != 0)
 			{
 				data = get_data(m, s, x);
+				
+				var line = d3.svg.line()
+				.x(function(d) 
+				{
+					return x(d.q);
+				})
+				.y(function(d) 
+				{
+					return y(d.p);
+				});	
+				
 				while(data[data.length-1].q > (ptz(lpercent / 100) * s + m))
 				{
 					data.pop()
 				}
+				
+				data[0].p = 0.0;
+				data[data.length-1].p = 0.0;
+				
+				d3.select("#percentl_normal_curve")
+					.datum(data)
+					.transition()
+					.attr("d", line)
+					.style("fill", "red");
+				
+				if(d3.select("#axisscalecheck").property("checked"))
+				{
+					data = get_data(m, s, x);
+					while(data[data.length-1].q > (ptz(lpercent / 100) * s + m))
+					{
+						data.pop()
+					}
+				}
+				else
+				{
+					data = get_data(0, 1, x);
+					while(data[data.length-1].q > ptz(lpercent / 100))
+					{
+						data.pop()
+					}
+				}
+				
+				data[0].p = 0.0;
+				data[data.length-1].p = 0.0;
+				
+				d3.select("#percentfixedl_normal_curve")
+					.datum(data)
+					.transition()
+					.attr("d", line)
+					.style("fill", "red");
 			}
 			else
 			{
-				data = get_data(0, 1, x);
-				while(data[data.length-1].q > ptz(lpercent / 100))
+				data = get_data(m, s ,x);
+				while(data.length > 1)
 				{
 					data.pop()
 				}
-			}
-			
-			data[0].p = 0.0;
-			data[data.length-1].p = 0.0;
-			
-			d3.select("#percentfixedl_normal_curve")
-				.datum(data)
-				.transition()
-				.attr("d", line)
-				.style("fill", "red");
+				data[0].p = 0.0;
+				data[0].q = 0.0;
 				
-			if(d3.select("#axisscalecheck").property("checked"))
+				d3.select("#percentl_normal_curve")
+					.datum(data)
+					.transition()
+					.attr("d", line)
+					.style("fill", "red");
+				
+				d3.select("#percentfixedl_normal_curve")
+					.datum(data)
+					.transition()
+					.attr("d", line)
+					.style("fill", "red");
+			}
+			if(rpercent != 0)
 			{
 				data = get_data(m, s, x);
+				
+				var line = d3.svg.line()
+				.x(function(d) 
+				{
+					return x(d.q);
+				})
+				.y(function(d) 
+				{
+					return y(d.p);
+				});	
+				
 				while(data[0].q < (ptz(1 - (rpercent / 100)) * s + m))
 				{
 					data.shift()
 				}
+				
+				data[0].p = 0.0;
+				data[data.length-1].p = 0.0;
+				
+				d3.select("#percentr_normal_curve")
+					.datum(data)
+					.transition()
+					.attr("d", line)
+					.style("fill", "red");
+				
+				if(d3.select("#axisscalecheck").property("checked"))
+				{
+					data = get_data(m, s, x);
+					while(data[0].q < (ptz(1 - (rpercent / 100)) * s + m))
+					{
+						data.shift()
+					}
+				}
+				else
+				{
+					data = get_data(0, 1, x);
+					while(data[0].q < ptz(1 - (rpercent / 100)))
+					{
+						data.shift()
+					}
+				}
+				
+				data[0].p = 0.0;
+				data[data.length-1].p = 0.0;
+				
+				d3.select("#percentfixedr_normal_curve")
+					.datum(data)
+					.transition()
+					.attr("d", line)
+					.style("fill", "red");
 			}
 			else
 			{
-				data = get_data(0, 1, x);
-				while(data[0].q < ptz(1 - (rpercent / 100)))
+				data = get_data(m, s ,x);
+				while(data.length > 1)
 				{
-					data.shift()
+					data.pop()
 				}
+				data[0].p = 0.0;
+				data[0].q = 0.0;
+				
+				d3.select("#percentr_normal_curve")
+					.datum(data)
+					.transition()
+					.attr("d", line)
+					.style("fill", "red");
+				
+				d3.select("#percentfixedr_normal_curve")
+					.datum(data)
+					.transition()
+					.attr("d", line)
+					.style("fill", "red");
 			}
-			
-			data[0].p = 0.0;
-			data[data.length-1].p = 0.0;
-			
-			d3.select("#percentfixedr_normal_curve")
-				.datum(data)
-				.transition()
-				.attr("d", line)
-				.style("fill", "red");
 		}
-
 		function update_x_axis(m, s, x)
 		{
 			x.domain([m - (z_limit * s), m + (z_limit * s)]);
