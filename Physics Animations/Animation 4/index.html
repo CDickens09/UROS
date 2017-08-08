@@ -548,11 +548,18 @@
 				var zruser = "N/A"
 				var zrnorm = "N/A"
 			}
-			
-				alert("Critical value for the left tail with mean " + m + " and standard deviation " + s + " is: " + zluser +
-						"Critical value for the left tail with mean " + 0 + " and standard deviation " + 1 + " is: " + zlnorm +
-						"Critical value for the right tail with mean " + m + " and standard deviation " + s + " is: " + zruser +
+			if(m != 0 && s != 1)
+			{
+				alert("Critical value for the left tail with mean " + m + " and standard deviation " + s + " is: " + zluser + "\\n" +
+						"Critical value for the left tail with mean " + 0 + " and standard deviation " + 1 + " is: " + zlnorm + "\\n" +
+						"Critical value for the right tail with mean " + m + " and standard deviation " + s + " is: " + zruser + "\\n" +
 						"Critical value for the right tail with mean " + 0 + " and standard deviation " + 1 + " is: " + zrnorm)
+			}
+			else
+			{
+				alert("Critical value for the left tail with mean " + m + " and standard deviation " + s + " is: " + zluser + "\\n" +
+						"Critical value for the right tail with mean " + m + " and standard deviation " + s + " is: " + zruser)
+			}
 		}
 	</script>
 	
