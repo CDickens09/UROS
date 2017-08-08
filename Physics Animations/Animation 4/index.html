@@ -292,7 +292,7 @@
 			
 			if(d3.select("#axisscalecheck").property("checked"))
 			{
-				data = fdata;
+				data = fdata.slice();
 				while(data[data.length-1].q > (ptz(lpercent / 100) * s + m))
 				{
 					data.pop()
@@ -300,7 +300,7 @@
 			}
 			else
 			{
-				data = fdata;
+				data = fdata.slice();
 				while(data[data.length-1].q > ptz(lpercent / 100))
 				{
 					data.pop()
