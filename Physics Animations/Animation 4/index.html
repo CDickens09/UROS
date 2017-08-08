@@ -522,18 +522,37 @@
 		
 		function showcv()
 		{
+			m = Number(d3.select("#meanbox").property("value"));
+			s = Number(d3.select("#stdevbox").property("value"));
 			lpercent = Number(d3.select("#lpercentbox").property("value"));
 			rpercent = Number(d3.select("#rpercentbox").property("value"));
-			alert(
-				if(lpercent != 0)
-				{
-					"Critical value on the left is: " + ptz(lpercent / 100) * s + m
-				}
-				if(rpercent != 0)
-				{
-				"Critical value on the left is: " + ptz(1 - (rpercent / 100)) * s + m)
-				}
-			);
+			
+			if(lpercent != 0)
+			{
+				var zluser = ptz(lpercent / 100) * s + m;
+				var zlnorm = ptz(lpercent / 100);
+			}
+			else
+			{
+				var zluser = "N/A"
+				var zlnorm = "N/A"
+			}
+			
+			if(rpercent != 0)
+			{
+				var zruser = ptz(1 - (rpercent / 100)) * s + m;
+				var zrnorm = ptz(1 - (rpercent / 100));
+			}
+			else
+			{
+				var zruser = "N/A"
+				var zrnorm = "N/A"
+			}
+			
+				alert("Critical value for the left tail with mean " + m + " and standard deviation " + s + " is: " + zluser +
+						"Critical value for the left tail with mean " + 0 + " and standard deviation " + 1 + " is: " + zlnorm +
+						"Critical value for the right tail with mean " + m + " and standard deviation " + s + " is: " + zruser +
+						"Critical value for the right tail with mean " + 0 + " and standard deviation " + 1 + " is: " + zrnorm)
 		}
 	</script>
 	
