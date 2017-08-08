@@ -524,14 +524,16 @@
 		{
 			lpercent = Number(d3.select("#lpercentbox").property("value"));
 			rpercent = Number(d3.select("#rpercentbox").property("value"));
-			if(lpercent != 0)
-			{
-				alert("Critical value on the left is: " + ptz(lpercent / 100) * s + m);
-			}
-			if(rpercent != 0)
-			{
-				alert("Critical value on the left is: " + ptz(1 - (rpercent / 100)) * s + m);
-			}
+			alert(
+				if(lpercent != 0)
+				{
+					"Critical value on the left is: " + ptz(lpercent / 100) * s + m
+				}
+				if(rpercent != 0)
+				{
+				"Critical value on the left is: " + ptz(1 - (rpercent / 100)) * s + m)
+				}
+			);
 		}
 	</script>
 	
