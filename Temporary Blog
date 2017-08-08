@@ -136,3 +136,5 @@
 07/08/2017 - Fixed formula for shading
 07/08/2017 - Added fill instead of just line
 07/08/2017 - Fixed several issues when changing standard deviation
+08/08/2017 - Fixed some more bugs when changing variables
+08/08/2017 - Fixed issue when percentage was set to 0
