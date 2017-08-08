@@ -176,8 +176,9 @@
 		updateshade();
 		
 		data = get_data(0, 1, x)
+		var fdata = data.slice();
 		update_x_axisf(x)
-		update_y_axisf(data, y)
+		update_y_axisf(fdata, y)
 		var line = d3.svg.line()
 		.x(function(d) 
 		{
@@ -188,7 +189,7 @@
 			return y(d.p);
 		});	
 		d3.select("#fixed_normal_curve")
-			.datum(data)
+			.datum(fdata)
 			.transition()
 			.attr("d", line);
 
@@ -291,7 +292,7 @@
 			
 			if(d3.select("#axisscalecheck").property("checked"))
 			{
-				data = get_data(m, s, x);
+				data = fdata;
 				while(data[data.length-1].q > (ptz(lpercent / 100) * s + m))
 				{
 					data.pop()
@@ -299,7 +300,7 @@
 			}
 			else
 			{
-				data = get_data(0, 1, x);
+				data = fdata;
 				while(data[data.length-1].q > ptz(lpercent / 100))
 				{
 					data.pop()
