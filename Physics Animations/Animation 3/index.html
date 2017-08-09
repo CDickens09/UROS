@@ -251,9 +251,9 @@
 		{
 			var colour = '#' + document.getElementById("colourpick").value;
 			d3.select("#waves")
-				.style("stroke", stroke);
+				.style("stroke", colour);
 			d3.select("#totwaves")
-				.style("stroke", stroke);
+				.style("stroke", colour);
 			document.getElementById('colourpick').value = jscolor;
 		}
 	</script>
