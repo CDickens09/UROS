@@ -161,7 +161,7 @@
 				new_data_history.push(new_data.concat());
 				
 				d3.select("#waves")
-					.datum(data_history)
+					.datum(data)
 					.transition()
 					.attr("d", valueline(new_data))
 					.style("stroke", colour);
@@ -185,7 +185,7 @@
 			var colour = '#' + document.getElementById("colourpick").value;
 			if(data_history.length > 1)
 			{
-				d3.selectAll("#waves").remove()
+				d3.selectAll("#waves").datum(0)
 				new_data_history.pop()
 				data_history.pop()
 				offset_history.pop()
