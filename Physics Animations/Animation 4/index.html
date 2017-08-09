@@ -70,7 +70,7 @@
 		<input class="input inputbox" type="text" id="rpercentbox" size="3" value="10"/>
 		<input class="input inputbox" type="checkbox" id="axisscalecheck" value="lock" checked>Scale axes</input>
 		<button onclick="showcv()">Show critical values</button>
-		<button class="jscolor {onFineChange:'colourpick(this)'}" value="FF0000"></button>
+		<button class="jscolor {onFineChange:'colourpick(this)'}" value="ff0000"></button>
 	</p>
 	
 	<p id="user">
@@ -248,6 +248,7 @@
 			s = Number(d3.select("#stdevbox").property("value"));
 			lpercent = Number(d3.select("#lpercentbox").property("value"));
 			rpercent = Number(d3.select("#rpercentbox").property("value"));
+			fill = '#' + d3.select("#jscolor").property("value");
 			
 			if(lpercent != 0)
 			{
@@ -275,7 +276,7 @@
 					.datum(data)
 					.transition()
 					.attr("d", line)
-					.style("fill", "red");
+					.style("fill", fill);
 				
 				if(d3.select("#axisscalecheck").property("checked"))
 				{
@@ -301,7 +302,7 @@
 					.datum(data)
 					.transition()
 					.attr("d", line)
-					.style("fill", "red");
+					.style("fill", fill);
 			}
 			else
 			{
@@ -317,13 +318,13 @@
 					.datum(data)
 					.transition()
 					.attr("d", line)
-					.style("fill", "red");
+					.style("fill", fill);
 				
 				d3.select("#percentfixedl_normal_curve")
 					.datum(data)
 					.transition()
 					.attr("d", line)
-					.style("fill", "red");
+					.style("fill", fill);
 			}
 			if(rpercent != 0)
 			{
@@ -351,7 +352,7 @@
 					.datum(data)
 					.transition()
 					.attr("d", line)
-					.style("fill", "red");
+					.style("fill", fill);
 				
 				if(d3.select("#axisscalecheck").property("checked"))
 				{
@@ -377,7 +378,7 @@
 					.datum(data)
 					.transition()
 					.attr("d", line)
-					.style("fill", "red");
+					.style("fill", fill);
 			}
 			else
 			{
@@ -393,13 +394,13 @@
 					.datum(data)
 					.transition()
 					.attr("d", line)
-					.style("fill", "red");
+					.style("fill", fill);
 				
 				d3.select("#percentfixedr_normal_curve")
 					.datum(data)
 					.transition()
 					.attr("d", line)
-					.style("fill", "red");
+					.style("fill", fill);
 			}
 		}
 		function update_x_axis(m, s, x)
