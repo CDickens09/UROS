@@ -126,6 +126,10 @@
 			.append("g")
 			.attr("transform","translate(" + margin.left + "," + margin.top + ")")
 
+		svg_tot.append("path")
+			.attr("class", "line")
+			.attr("id", "totwaves")
+			
 		var valueline = d3.svg.line()
 		.x(function(d) {return +d.x})
 		.y(function(d) {return +d.y});
