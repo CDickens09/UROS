@@ -214,7 +214,7 @@
 
 		function removeall() 
 		{
-			d3.selectAll("#waves").remove()
+			d3.selectAll("#waves").datum(0)
 			numwaves = 0
 			offsety = 0
 			totamplitude = 0
@@ -235,7 +235,7 @@
 		function totalwave(data) 
 		{
 			var colour = '#' + document.getElementById("colourpick").value;
-			d3.select("#totwaves").remove()
+			d3.select("#totwaves").datum(0)
 			var my_data = []
 			
 			for (var i = 0; i < width; i++) 
