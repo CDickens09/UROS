@@ -115,6 +115,10 @@
 			.attr("height", height + margin.top + margin.bottom)
 			.append("g")
 			.attr("transform","translate(" + margin.left + "," + margin.top + ")")
+			
+		svg.append("path")
+			.attr("class", "line")
+			.attr("id", "waves")
 
 		var svg_tot = d3.select("#tot_wave")
 			.append("svg")
@@ -151,10 +155,12 @@
 				
 				data_history.push(data.concat());
 				new_data_history.push(new_data.concat());
-				svg.append("path")
-					.style("stroke", colour)
-					.attr("id","data")
-					.attr("d", valueline(new_data));
+				
+				d3.select("#waves")
+					.datum(data)
+					.transition()
+					.attr("d", line)
+					.style("stroke", colour);
 					
 				offsety += +amplitude;
 				offset_history.push(offsety)
