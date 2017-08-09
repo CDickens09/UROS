@@ -125,7 +125,9 @@
 			data[i] = 0
 		}
 		
-		totalwave(data)
+		totalwave(data);
+		colourpick(document.getElementById("colourpick").value);
+		
 		function addwave()
 		{
 			var amplitude = document.getElementById('amplitudebox').value;
@@ -157,7 +159,9 @@
 			{
 				alert("Another wave will not fit on the graph, please use smaller amplitude");
 			}
+			colourpick(document.getElementById("colourpick").value);
 		}
+		
 		function removelast() 
 		{
 			if(data_history.length > 1)
@@ -185,7 +189,9 @@
 			{
 				removeall()
 			}
+			colourpick(document.getElementById("colourpick").value);
 		}
+		
 		function removeall() 
 		{
 			d3.selectAll("#data").remove()
@@ -204,7 +210,9 @@
 			new_data_history = []
 			data_history = []
 			totamplitude_history = []
+			colourpick(document.getElementById("colourpick").value);
 		}
+		
 		function totalwave(data) 
 		{
 			d3.select("#total_data").remove()
@@ -218,6 +226,8 @@
 			svg_tot.append("path")
 				.attr("id","total_data")
 				.attr("d", valueline(my_data));
+				
+			colourpick(document.getElementById("colourpick").value);
 		}
 		
 		function colourpick(jscolor)
