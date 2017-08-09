@@ -233,10 +233,8 @@
 		function colourpick(jscolor)
 		{
 			stroke = '#' + jscolor;
-			svg_tot.attr("id","total_data")
-				.style("stroke", stroke);
-			svg.attr("id","data")
-				.style("stroke", stroke);
+			svg_tot.path.style.stroke = stroke;
+			svg.path.style.stroke = stroke;
 			document.getElementById('colourpick').value = jscolor;
 		}
 	</script>
