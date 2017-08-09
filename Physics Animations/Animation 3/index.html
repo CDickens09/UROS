@@ -175,9 +175,9 @@
 				new_data_history.push(new_data.concat());
 				
 				d3.select("#waves")
-					.datum(data_history)
+					.datum(data)
 					.transition()
-					.attr("d", valueline(new_data_history))
+					.attr("d", valueline(new_data))
 					.style("stroke", colour);
 					
 				offsety += +amplitude;
