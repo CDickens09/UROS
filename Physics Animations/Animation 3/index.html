@@ -163,7 +163,7 @@
 				d3.select("#waves")
 					.datum(data)
 					.transition()
-					.append("d", valueline(new_data))
+					.attr("d", valueline(new_data))
 					.style("stroke", colour);
 					
 				offsety += +amplitude;
@@ -196,7 +196,7 @@
 					d3.select("#waves")
 						.datum(data_history)
 						.transition()
-						.append("d", valueline(new_data_history[i]))
+						.attr("d", valueline(new_data_history[i]))
 						.style("stroke", colour);
 				}
 				
