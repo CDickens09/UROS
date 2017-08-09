@@ -978,7 +978,7 @@ var jsc = {
 
 		// General options
 		//
-		this.value = null; // initial HEX color. To change it later, use methods fromString(), fromHSV() and fromRGB()
+		this.value = '#FFFFFF'; // initial HEX color. To change it later, use methods fromString(), fromHSV() and fromRGB()
 		this.valueElement = targetElement; // element that will be used to display and input the color code
 		this.styleElement = targetElement; // element that will preview the picked color using CSS backgroundColor
 		this.required = true; // whether the associated text <input> can be left empty
@@ -995,7 +995,7 @@ var jsc = {
 		// Accessing the picked color
 		//
 		this.hsv = [0, 0, 100]; // read-only  [0-360, 0-100, 0-100]
-		this.rgb = [0, 0, 0]; // read-only  [0-255, 0-255, 0-255]
+		this.rgb = [255, 255, 255]; // read-only  [0-255, 0-255, 0-255]
 
 		// Color Picker options
 		//
@@ -1012,7 +1012,7 @@ var jsc = {
 		this.buttonColor = '#000000'; // CSS color
 		this.buttonHeight = 18; // px
 		this.padding = 12; // px
-		this.backgroundColor = '#000000'; // CSS color
+		this.backgroundColor = '#FFFFFF'; // CSS color
 		this.borderWidth = 1; // px
 		this.borderColor = '#BBBBBB'; // CSS color
 		this.borderRadius = 8; // px
@@ -1022,7 +1022,7 @@ var jsc = {
 		this.shadowBlur = 15; // px
 		this.shadowColor = 'rgba(0,0,0,0.2)'; // CSS color
 		this.pointerColor = '#4C4C4C'; // px
-		this.pointerBorderColor = '#000000'; // px
+		this.pointerBorderColor = '#FFFFFF'; // px
         this.pointerBorderWidth = 1; // px
         this.pointerThickness = 2; // px
 		this.zIndex = 1000;
