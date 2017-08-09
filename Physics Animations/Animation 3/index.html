@@ -153,7 +153,7 @@
 				svg.append("path")
 					.attr("id","data")
 					.attr("d", valueline(new_data))
-					.attr("style", "stroke: colour");
+					.attr("style", "stroke: " + colour);
 				offsety += +amplitude;
 				offset_history.push(offsety)
 				totalwave(data) ;
@@ -183,7 +183,7 @@
 					svg.append("path")
 					.attr("id","data")
 					.attr("d", valueline(new_data_history[i]))
-					.attr("style", "stroke: colour");
+					.attr("style", "stroke: " + colour);
 				}
 				
 				data = data_history[last-1].concat()
@@ -231,7 +231,7 @@
 			svg_tot.append("path")
 				.attr("id","total_data")
 				.attr("d", valueline(my_data))
-				.attr("style", "stroke: colour");
+				.attr("style", "stroke: " + colour);
 		}
 		
 		function colourpick(jscolor)
