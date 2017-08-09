@@ -70,7 +70,7 @@
 		<input class="input inputbox" type="text" id="rpercentbox" size="3" value="10"/>
 		<input class="input inputbox" type="checkbox" id="axisscalecheck" value="lock" checked>Scale axes</input>
 		<button onclick="showcv()">Show critical values</button>
-		<button id="colourpick" class="jscolor {onFineChange:'colourpick(this)'}">Shade Colour</button>
+		<button id="colourpick" class="jscolor {onFineChange:'colourpick(this), 'backgroundColor:'#000000'}">Shade Colour</button>
 	</p>
 	
 	<p id="user">
@@ -93,15 +93,6 @@
 		base_sigma = 1;
 		Z_MAX = 6;
 		z_limit = 4;
-		
-		var element = document.getElementById('colourpick');
-		document.getElementById('colourpick').value = "000000";
-		element.styleElement._jscOrigStyle = 
-		{
-		backgroundImage: null,
-		backgroundColor: rgb(0, 0, 0),
-		color: rgb(255, 255, 255)
-		};
 		
 		var x = d3.scale.linear()
 			.range([0, width]);
