@@ -63,7 +63,7 @@
 		<button type="button" onclick="removelast()">Remove Last Wave</button>
 		<button type="button" onclick="removeall()">Remove All Waves</button>
 		<label class="input" for="colourpick">Wave Colour:</label>
-		<button id="colourpick" class="jscolor {value:'000000'}"></button>
+		<button id="colourpick" class="jscolor {onFineChange:'colourpick(this)', value:'000000'}"></button>
 	</div>
 	
 	<p id="sine_wave">
@@ -114,6 +114,7 @@
 			.attr("height", height + margin.top + margin.bottom)
 			.append("g")
 			.attr("transform","translate(" + margin.left + "," + margin.top + ")");
+			.style("stroke", stroke);
 
 		var svg_tot = d3.select("#tot_wave")
 			.append("svg")
@@ -121,6 +122,7 @@
 			.attr("height", height + margin.top + margin.bottom)
 			.append("g")
 			.attr("transform","translate(" + margin.left + "," + margin.top + ")");
+			.style("stroke", stroke);
 
 		var valueline = d3.svg.line()
 		.x(function(d) {return +d.x})
@@ -183,6 +185,7 @@
 					svg.append("path")
 					.attr("id","data")
 					.attr("d", valueline(new_data_history[i]));
+					.style("stroke", stroke);
 				}
 				
 				data = data_history[last-1].concat()
@@ -231,6 +234,11 @@
 				.attr("id","total_data")
 				.attr("d", valueline(my_data))
 				.style("stroke", stroke);
+		}
+		
+		function colourpick(jscolor)
+		{
+			document.getElementById('colourpick').value = jscolor;
 		}
 	</script>
 	
