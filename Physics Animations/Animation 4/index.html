@@ -92,9 +92,9 @@
 		base_mean = 0;
 		base_sigma = 1;
 		Z_MAX = 6;
-
 		z_limit = 4;
-
+		document.getElementById('colourpick').value = "ffffff";
+		
 		var x = d3.scale.linear()
 			.range([0, width]);
 
@@ -174,10 +174,9 @@
 		svg_fixed.append("path")
 			.attr("class", "line")
 			.attr("id", "percentfixedr_normal_curve")
-		
 
 		updateshade();
-		
+
 		data = get_data(0, 1, x)
 		update_x_axisf(x)
 		update_y_axisf(data, y)
@@ -208,8 +207,6 @@
 			updateshade()
 			colourpick(document.getElementById("colourpick").value)
 		});
-
-		document.getElementById('colourpick').value = "FFFFFF";
 		
 		function update(x, y)
 		{
