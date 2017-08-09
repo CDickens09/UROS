@@ -62,8 +62,8 @@
 		<button type="button" onclick="addwave()">Add Wave</button>
 		<button type="button" onclick="removelast()">Remove Last Wave</button>
 		<button type="button" onclick="removeall()">Remove All Waves</button>
-		<label class="input" for="colourpick">Shade Colour:</label>
-		<button id="colourpick" class="jscolor {onFineChange:'colourpick(this)', value:'000000'}"></button>
+		<label class="input" for="colourpick">Wave Colour:</label>
+		<button id="colourpick" class="jscolor {value:'000000'}"></button>
 	</div>
 	
 	<p id="sine_wave">
@@ -97,6 +97,7 @@
 		var offsety = 0
 		var numwaves = 0
 		var totamplitude = 0
+		var stroke = '#' + document.getElementById("colourpick").value;
 
 		var margin = {top: 20, right: 20, bottom: 20, left: 10},
 			width = window.innerWidth - margin.left - margin.right,
@@ -151,7 +152,8 @@
 				new_data_history.push(new_data.concat());
 				svg.append("path")
 					.attr("id","data")
-					.attr("d", valueline(new_data));
+					.attr("d", valueline(new_data))
+					.style("stroke", stroke);
 				offsety += +amplitude;
 				offset_history.push(offsety)
 				totalwave(data) ;
@@ -227,15 +229,8 @@
 			
 			svg_tot.append("path")
 				.attr("id","total_data")
-				.attr("d", valueline(my_data));
-		}
-		
-		function colourpick(jscolor)
-		{
-			stroke = '#' + jscolor;
-			document.getElementById('data').style("stroke", stroke);
-			document.getElementById('total_data').style("stroke", stroke);
-			document.getElementById('colourpick').value = jscolor;
+				.attr("d", valueline(my_data))
+				.style("stroke", stroke);
 		}
 	</script>
 	
