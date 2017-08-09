@@ -152,9 +152,10 @@
 				data_history.push(data.concat());
 				new_data_history.push(new_data.concat());
 				svg.append("path")
+					.style("stroke", colour)
 					.attr("id","data")
-					.attr("d", valueline(new_data))
-					.style("stroke", colour);
+					.attr("d", valueline(new_data));
+					
 				offsety += +amplitude;
 				offset_history.push(offsety)
 				totalwave(data) ;
