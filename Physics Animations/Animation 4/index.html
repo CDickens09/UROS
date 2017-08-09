@@ -209,6 +209,10 @@
 			colourpick(document.getElementById("colourpick").value)
 		});
 
+		document.getElementById('colourpick').Color = "FFFFFF";
+		document.getElementById('colourpick').backgroundColor = "000000";
+		document.getElementById('colourpick').value = "000000";
+		
 		function update(x, y)
 		{
 			m = Number(d3.select("#meanbox").property("value"));
