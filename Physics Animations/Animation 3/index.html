@@ -143,6 +143,20 @@
 
 		function addwave()
 		{
+			if(svg.path != true)
+			{
+				svg.append("path")
+					.attr("class", "line")
+					.attr("id", "waves")
+			}
+			
+			if(svg_tot.path != true)
+			{
+				svg_tot.append("path")
+					.attr("class", "line")
+					.attr("id", "totwaves")
+			}
+			
 			var amplitude = document.getElementById('amplitudebox').value;
 			var frequency = document.getElementById('frequencybox').value / (window.innerWidth) * Math.PI * 2;
 			var phase = document.getElementById('phasebox').value / 360 * Math.PI * 2;
