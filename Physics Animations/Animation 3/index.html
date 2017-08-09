@@ -174,9 +174,8 @@
 				data_history.push(data.concat());
 				new_data_history.push(new_data.concat());
 				
-				d3.select("#waves")
-					.datum(data)
-					.transition()
+				svg.append("path")
+					.attr("id","data")
 					.attr("d", valueline(new_data))
 					.style("stroke", colour);
 					
