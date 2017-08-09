@@ -27,7 +27,6 @@
 			}
 			path
 			{
-				stroke: steelblue;
 				stroke-width: 1;
 				fill: none;
 			}
@@ -62,6 +61,8 @@
 		<button type="button" onclick="addwave()">Add Wave</button>
 		<button type="button" onclick="removelast()">Remove Last Wave</button>
 		<button type="button" onclick="removeall()">Remove All Waves</button>
+		<label class="input" for="colourpick">Shade Colour:</label>
+		<button id="colourpick" class="jscolor {onFineChange:'colourpick(this)', value:'000000'}"></button>
 	</div>
 	
 	<p id="sine_wave">
@@ -226,6 +227,14 @@
 			svg_tot.append("path")
 				.attr("id","total_data")
 				.attr("d", valueline(my_data));
+		}
+		
+		function colourpick(jscolor)
+		{
+			stroke = '#' + jscolor;
+			d3.select("#path")
+					.style("stroke", stroke);
+			document.getElementById('colourpick').value = jscolor;
 		}
 	</script>
 	
