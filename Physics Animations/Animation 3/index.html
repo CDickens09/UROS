@@ -98,7 +98,6 @@
 		var offsety = 0
 		var numwaves = 0
 		var totamplitude = 0
-		var colour = '#' + document.getElementById("colourpick").value;
 
 		var margin = {top: 20, right: 20, bottom: 20, left: 10},
 			width = window.innerWidth - margin.left - margin.right,
@@ -143,6 +142,7 @@
 			var amplitude = document.getElementById('amplitudebox').value;
 			var frequency = document.getElementById('frequencybox').value / (window.innerWidth) * Math.PI * 2;
 			var phase = document.getElementById('phasebox').value / 360 * Math.PI * 2;
+			var colour = '#' + document.getElementById("colourpick").value;
 			if(totamplitude * 2 < height && amplitude * 2 < height)
 			{
 				var new_data = []
@@ -178,6 +178,7 @@
 
 		function removelast() 
 		{
+			var colour = '#' + document.getElementById("colourpick").value;
 			if(data_history.length > 1)
 			{
 				d3.selectAll("#data").remove()
@@ -188,10 +189,11 @@
 				
 				for (var i=0; i < last; i++)
 				{
-					svg.append("path")
-					.attr("id","data")
-					.attr("d", valueline(new_data_history[i]))
-					.style("stroke", colour);
+					d3.select("#waves")
+						.datum(data)
+						.transition()
+						.attr("d", valueline(new_data_history[i]))
+						.style("stroke", colour);
 				}
 				
 				data = data_history[last-1].concat()
@@ -208,6 +210,7 @@
 
 		function removeall() 
 		{
+			var colour = '#' + document.getElementById("colourpick").value;
 			d3.selectAll("#data").remove()
 			numwaves = 0
 			offsety = 0
@@ -228,6 +231,7 @@
 
 		function totalwave(data) 
 		{
+			var colour = '#' + document.getElementById("colourpick").value;
 			d3.select("#total_data").remove()
 			var my_data = []
 			
@@ -235,16 +239,22 @@
 			{
 				my_data.push({x:i+origin.x, y:data[i] + height/2})
 			}
-			
-			svg_tot.append("path")
-				.attr("id","total_data")
+				
+			d3.select("#totwaves")
+				.datum(y_data)
+				.transition()
 				.attr("d", valueline(my_data))
 				.style("stroke", colour);
+				
 		}
 		
 		function colourpick(jscolor)
 		{
-			p.svg.g.path.style.stroke = colour;
+			var colour = '#' + document.getElementById("colourpick").value;
+			d3.select("#waves")
+					.style("stroke", stroke);
+			d3.select("#totwaves")
+					.style("stroke", stroke);
 			document.getElementById('colourpick').value = jscolor;
 		}
 	</script>
