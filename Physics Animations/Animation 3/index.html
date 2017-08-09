@@ -114,7 +114,6 @@
 			.attr("height", height + margin.top + margin.bottom)
 			.append("g")
 			.attr("transform","translate(" + margin.left + "," + margin.top + ")")
-			.setAttribute('style', 'stroke: colour');
 
 		var svg_tot = d3.select("#tot_wave")
 			.append("svg")
@@ -122,7 +121,6 @@
 			.attr("height", height + margin.top + margin.bottom)
 			.append("g")
 			.attr("transform","translate(" + margin.left + "," + margin.top + ")")
-			.setAttribute('style', 'stroke: colour');
 
 		var valueline = d3.svg.line()
 		.x(function(d) {return +d.x})
@@ -155,7 +153,7 @@
 				svg.append("path")
 					.attr("id","data")
 					.attr("d", valueline(new_data))
-					.setAttribute('style', 'stroke: colour');
+					.attr("style", "stroke: blue");
 				offsety += +amplitude;
 				offset_history.push(offsety)
 				totalwave(data) ;
@@ -185,7 +183,7 @@
 					svg.append("path")
 					.attr("id","data")
 					.attr("d", valueline(new_data_history[i]))
-					.setAttribute('style', 'stroke: colour');
+					.attr("style", "stroke: blue");
 				}
 				
 				data = data_history[last-1].concat()
@@ -233,7 +231,7 @@
 			svg_tot.append("path")
 				.attr("id","total_data")
 				.attr("d", valueline(my_data))
-				.setAttribute('style', 'stroke: colour');
+				.attr("style", "stroke: blue");
 		}
 		
 		function colourpick(jscolor)
