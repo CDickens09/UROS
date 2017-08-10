@@ -600,10 +600,6 @@
 				.scale(y)
 				.orient("left");
 			
-			update(x, y)
-			updateshade()
-			colourpick(document.getElementById("colourpick").value)
-			
 			d3.select("#user").svg
 			.attr("width", width + margin.left + margin.right)
 			.attr("height", height + margin.top + margin.bottom)
@@ -611,6 +607,28 @@
 			d3.select("#normal").svg_fixed
 			.attr("width", width + margin.left + margin.right)
 			.attr("height", height + margin.top + margin.bottom)
+			
+			data = get_data(0, 1, x)
+			update_x_axisf(x)
+			update_y_axisf(data, y)
+			var line = d3.svg.line()
+			.x(function(d) 
+			{
+				return x(d.q);
+			})
+			.y(function(d) 
+			{
+				return y(d.p);
+			});	
+		
+			d3.select("#fixed_normal_curve")
+				.datum(data)
+				.transition()
+				.attr("d", line);
+			
+			update(x, y)
+			updateshade()
+			colourpick(document.getElementById("colourpick").value)
 			
 			console.log(width);
 			console.log(height);
