@@ -87,7 +87,7 @@
 			right: 20,
 			bottom: 30,
 			left: 50
-		},
+		};
 		resize()
 		window.onresize = resize;
 		base_mean = 0;
@@ -189,6 +189,7 @@
 		{
 			return y(d.p);
 		});	
+		
 		d3.select("#fixed_normal_curve")
 			.datum(data)
 			.transition()
