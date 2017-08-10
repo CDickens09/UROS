@@ -90,8 +90,6 @@
 		};
 		var width = window.innerWidth - 70;
 		var height = window.innerHeight / 2 - 144;
-		resize()
-		window.onresize = resize();
 		base_mean = 0;
 		base_sigma = 1;
 		Z_MAX = 6;
@@ -595,6 +593,8 @@
 			console.log(width);
 			console.log(height);
 		}
+		
+		window.onresize = resize;
 	</script>
 	
 	<footer class="w3-center w3-black">
