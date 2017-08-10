@@ -599,7 +599,11 @@
 			yAxis = d3.svg.axis()
 				.scale(y)
 				.orient("left");
-				
+			
+			update(x, y)
+			updateshade()
+			colourpick(document.getElementById("colourpick").value)
+			
 			console.log(width);
 			console.log(height);
 		}
