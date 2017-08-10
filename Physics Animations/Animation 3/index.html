@@ -67,11 +67,11 @@
 		<button id="colourpick" class="jscolor {onFineChange:'colourpick(this)', value:'000000'}"></button>
 	</div>
 	
-	<div class="w3-container" id="sine_wave">
-   </div>
+	<p id="sine_wave">
+   </p>
 
-	<div class="w3-container" id="tot_wave">
-   </div>
+   <p id="tot_wave">
+   </p>
 	
 	<p>
 		To add a wave enter the desired values for amplitude, frequency and phase shift then press the add wave button.
@@ -105,13 +105,18 @@
          x: 0,
          y: 0,
 		};
-		
 		var svg = d3.select("#sine_wave")
 			.append("svg")
-			
+			.attr("width", width + margin.left + margin.right)
+			.attr("height", height + margin.top + margin.bottom)
+			.append("g")
+			.attr("transform","translate(" + margin.left + "," + margin.top + ")");
 		var svg_tot = d3.select("#tot_wave")
 			.append("svg")
-			
+			.attr("width", width + margin.left + margin.right)
+			.attr("height", height + margin.top + margin.bottom)
+			.append("g")
+			.attr("transform","translate(" + margin.left + "," + margin.top + ")");
 		var valueline = d3.svg.line()
 		.x(function(d) {return +d.x})
 		.y(function(d) {return +d.y});
@@ -233,22 +238,6 @@
 				.style('stroke', colour);
 			document.getElementById('colourpick').value = jscolor;
 		}
-		
-		function resize()
-		{
-			width = window.innerWidth - 70 + margin.left + margin.right;
-			height = window.innerHeight / 2 - 144 + margin.top + margin.bottom;
-			d3.select("#sine_wave")
-				.style("width", width)
-				.style("height", height);
-			d3.select("#tot_wave")
-				.style("width", width)
-				.style("height", height);
-			console.log(width);
-			console.log(height);
-		}
-		
-		window.onresize = resize
 	</script>
 	
 	<footer class="w3-center w3-black">
