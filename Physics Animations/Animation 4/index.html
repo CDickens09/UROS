@@ -604,6 +604,14 @@
 			updateshade()
 			colourpick(document.getElementById("colourpick").value)
 			
+			d3.select("#user").svg
+			.attr("width", width + margin.left + margin.right)
+			.attr("height", height + margin.top + margin.bottom)
+			
+			d3.select("#normal").svg_fixed
+			.attr("width", width + margin.left + margin.right)
+			.attr("height", height + margin.top + margin.bottom)
+			
 			console.log(width);
 			console.log(height);
 		}
