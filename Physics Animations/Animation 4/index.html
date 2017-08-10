@@ -88,8 +88,8 @@
 			bottom: 30,
 			left: 50
 		},
-		width = innerWidth - 70,
-		height = innerHeight / 2 - 144;
+		resize()
+		window.onresize = resize;
 		base_mean = 0;
 		base_sigma = 1;
 		Z_MAX = 6;
@@ -578,6 +578,12 @@
 			d3.select("#percentfixedr_normal_curve")
 					.style("fill", fill);
 			document.getElementById('colourpick').value = jscolor;
+		}
+		
+		function resize()
+		{
+			width = innerWidth - 70,
+			height = innerHeight / 2 - 144;
 		}
 	</script>
 	
