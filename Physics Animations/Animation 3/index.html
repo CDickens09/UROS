@@ -89,6 +89,10 @@
 		You may add as many waves as fit in the top graph.
 	</p>
 	
+	<p>
+		If you resize the window all waves will be removed.
+	</p>
+	
 	<script>
 		var data = []
 		var data_history = []
@@ -243,6 +247,7 @@
 		
 		function resize()
 		{
+			removeall()
 			width = window.innerWidth - margin.left - margin.right;
 			height = window.innerHeight / 2 - margin.top - margin.bottom - 147;
 			
