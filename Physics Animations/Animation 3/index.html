@@ -238,6 +238,17 @@
 				.style('stroke', colour);
 			document.getElementById('colourpick').value = jscolor;
 		}
+		
+		function resize()
+		{
+			width = window.innerWidth - 70;
+			height = window.innerHeight / 2 - 144;
+			
+			console.log(width);
+			console.log(height);
+		}
+		
+		window.onresize = resize
 	</script>
 	
 	<footer class="w3-center w3-black">
