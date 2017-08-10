@@ -87,9 +87,9 @@
 			right: 20,
 			bottom: 30,
 			left: 50
-		};
-		var width = window.innerWidth - 70;
-		var height = window.innerHeight / 2 - 144;
+		},
+		width = innerWidth - 70,
+		height = innerHeight / 2 - 144;
 		base_mean = 0;
 		base_sigma = 1;
 		Z_MAX = 6;
@@ -189,7 +189,6 @@
 		{
 			return y(d.p);
 		});	
-		
 		d3.select("#fixed_normal_curve")
 			.datum(data)
 			.transition()
@@ -580,57 +579,6 @@
 					.style("fill", fill);
 			document.getElementById('colourpick').value = jscolor;
 		}
-		
-		function resize()
-		{
-			width = window.innerWidth - 70;
-			height = window.innerHeight / 2 - 144;
-			
-			x = d3.scale.linear()
-				.range([0, width]);
-
-			y = d3.scale.linear()
-				.range([height, 0]);
-				
-			xAxis = d3.svg.axis()
-				.scale(x)
-				.orient("bottom");
-
-			yAxis = d3.svg.axis()
-				.scale(y)
-				.orient("left");
-
-			d3.selectAll("#svg")
-			.attr("width", width + margin.left + margin.right)
-			.attr("height", height + margin.top + margin.bottom)
-			
-			data = get_data(0, 1, x)
-			update_x_axisf(x)
-			update_y_axisf(data, y)
-			var line = d3.svg.line()
-			.x(function(d) 
-			{
-				return x(d.q);
-			})
-			.y(function(d) 
-			{
-				return y(d.p);
-			});	
-		
-			d3.select("#fixed_normal_curve")
-				.datum(data)
-				.transition()
-				.attr("d", line);
-				
-			update(x, y)
-			updateshade()
-			colourpick(document.getElementById("colourpick").value)
-			
-			console.log(width);
-			console.log(height);
-		}
-		
-		window.onresize = resize;
 	</script>
 	
 	<footer class="w3-center w3-black">
