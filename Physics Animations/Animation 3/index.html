@@ -105,14 +105,13 @@
          x: 0,
          y: 0,
 		};
+		
 		var svg = d3.select("#sine_wave")
 			.append("svg")
-			.append("g")
-			.attr("transform","translate(" + margin.left + "," + margin.top + ")");
+			
 		var svg_tot = d3.select("#tot_wave")
 			.append("svg")
-			.append("g")
-			.attr("transform","translate(" + margin.left + "," + margin.top + ")");
+			
 		var valueline = d3.svg.line()
 		.x(function(d) {return +d.x})
 		.y(function(d) {return +d.y});
