@@ -107,14 +107,10 @@
 		};
 		var svg = d3.select("#sine_wave")
 			.append("svg")
-			.attr("width", 100%)
-			.attr("height", 100%)
 			.append("g")
 			.attr("transform","translate(" + margin.left + "," + margin.top + ")");
 		var svg_tot = d3.select("#tot_wave")
 			.append("svg")
-			.attr("width", 100%)
-			.attr("height", 100%)
 			.append("g")
 			.attr("transform","translate(" + margin.left + "," + margin.top + ")");
 		var valueline = d3.svg.line()
