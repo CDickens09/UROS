@@ -157,3 +157,4 @@
 10/08/2017 - Reverted Animation 4
 10/08/2017 - Added resizing to Animation 3 - Also unsuccessful
 10/08/2017 - Reverted Animation 3
+10/08/2017 - Got animation 3 to resize correctly if it removes all waves
